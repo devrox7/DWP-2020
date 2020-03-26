@@ -1,3 +1,24 @@
 DROP DATABASE IF EXISTS DWPDB;
 CREATE DATABASE DWPDB;
 USE DWPDB;
+
+
+CREATE TABLE Product (
+    ProductID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Name varchar(255) NOT NULL,
+    Price int NOT NULL,
+    Description varchar(255) NULL
+)
+
+
+CREATE TABLE User (
+    UserID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Name varchar(255) NOT NULL,
+    Email varchar(25) NOT NULL
+)
+
+CREATE TABLE Order (
+    OrderID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    FOREIGN KEY (UserID) REFERENCES User (UserID)
+    
+)
