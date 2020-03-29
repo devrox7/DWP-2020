@@ -1,9 +1,12 @@
 <?php
-require_once('routes.php');
-echo $_GET['url'];
-?>
+include './Views/Product.view.php';
+include './Controllers/Product.controller.php';
 
-<!doctype html>
+require_once('routes.php');
+// echo $_GET['url'];
+?> 
+
+<!DOCTYPE HTML>
 
 <html lang="en">
 <head>
@@ -12,14 +15,27 @@ echo $_GET['url'];
   <title>DUCK SHOP</title>
   <meta name="description" content="DUCK SHOP">
 
-
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/styles.css">
 
 </head>
 
 <body>
 <h1>DUCK SHOP</h1>
 
-  <script src="scripts.js"></script>
+<?php
+
+
+$product1 = new ProductView();
+$product1->showProducts();
+
+// $product2 = new ProductController();
+// $product2->createProduct("NewDuck","500", "Newest duck in the shop");
+?>
+
+  <script src="./assets/scripts.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

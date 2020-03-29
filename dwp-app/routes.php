@@ -1,8 +1,8 @@
 <?php
 
 
-Route::set('home',function(){
-    echo "home page";
-})
+// Route::set('home',function(){
+//     echo "home page";
+// })
 
 ?>
