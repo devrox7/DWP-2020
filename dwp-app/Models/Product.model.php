@@ -3,6 +3,10 @@ include './dbconn.php';
 
 class ProductModel extends DWPDB{
 
+    public function __construct(){
+        
+    }
+
     protected function getProducts(){
         $sql = "SELECT * FROM products";
         $stmt = $this->connect()->prepare($sql);
