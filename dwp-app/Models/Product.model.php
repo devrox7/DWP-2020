@@ -16,14 +16,14 @@ class ProductModel extends DWPDB{
         return $result;
     }
 
-    // protected function getProduct($id){
-    //     $sql = "SELECT * FROM products WHERE ProductID = ?";
-    //     $stmt = $this->connect()->prepare($sql);
-    //     $stmt->execute([$id]);
+    protected function getProduct($id){
+        $sql = "SELECT * FROM products WHERE ProductID = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$id]);
 
-    //     $result = $stmt->fetchAll();
-    //     return $result;
-    // }
+        $result = $stmt->fetchAll();
+        return $result;
+    }
 
     protected function setProduct($name, $price, $description){
         $sql = "INSERT INTO products(Name, Price, Description) VALUES (?,?,?)";
