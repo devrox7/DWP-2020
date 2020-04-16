@@ -55,7 +55,8 @@
            
         
         <div class="col d-flex justify-content-end">
-        <div class="user-icon "> <i class="fas fa-user"></i></div>
+            <div class="login-text">SIGN UP &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LOG IN &nbsp;</div>
+            <div class="user-icon "> <i class="fas fa-user"></i></div>
 
         </div>
               
