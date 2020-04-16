@@ -22,7 +22,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
    
     <img class="duck-logo" src="./assets/images/logo.png">
-    <a class="navbar-brand" href="#">DUCK SHOP</a>
+    <a class="navbar-brand mr-5" href="#">DUCK SHOP</a>
 
 
 
@@ -35,7 +35,7 @@
 
        
         
-            <div class="collapse navbar-collapse row" id="navbarNav">
+            <div class="collapse navbar-collapse row " id="navbarNav">
                 <ul class="navbar-nav col">
          
                      <li class="nav-item active ">
@@ -66,7 +66,7 @@
         <?php
         // show page header
         echo "
-        <div class='page-header m-3'>
+        <div class='page-header ml-4 mt-5'>
             <div class='row d-flex justify-content-around'>
                 <div class='col'><h1>{$page_title}</h1></div>
                 <div data-toggle='tooltip' data-placement='left' title='Shopping Basket' class='col d-flex justify-content-end'><div class='basket-icon'  ><i class='fas fa-shopping-cart'></i></div></div>
