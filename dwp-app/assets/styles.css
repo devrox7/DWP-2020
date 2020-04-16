@@ -1,11 +1,165 @@
-table,
-th,
-td {
-    border: 1px solid black;
-    border-collapse: collapse;
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Giga&family=Montserrat&display=swap');
+body {
+    background-color: rgba(165, 165, 165, 0.08);
 }
 
-table {
-    width: 500px;
-    margin: 20px;
+.container-fluid {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+.duck-logo {
+    width: 50px;
+    height: 50px;
+    filter: invert(82%) sepia(95%) saturate(7486%) hue-rotate(338deg) brightness(98%) contrast(97%);
+}
+
+.navbar-brand {
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+    font-family: 'Lexend Giga', sans-serif;
+}
+
+.nav-link {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: #0c4e94;
+}
+
+.card {
+    margin-bottom: 30px;
+    padding: 20px 12px;
+    box-shadow: rgba(7, 93, 82, 0.04) 0px 0px 4px 0px, rgba(10, 74, 51, 0.08) 0px 8px 16px 0px;
+    border-radius: 20px;
+    /* height: 500px; */
+    position: relative;
+    transition: transform .3s;
+    margin: 30px 0px;
+    border: none;
+    min-width: 300px;
+}
+
+.card:hover {
+    /* background-color: #f3f4f5; */
+    transform: scale(1.03);
+}
+
+.card-text {
+    overflow: hidden;
+    position: relative;
+    height: 160px;
+    max-height: 190px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    color: grey;
+    letter-spacing: 0.2px;
+}
+
+.duck-img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    align-self: center;
+}
+
+.prod-code {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 12px;
+}
+
+.prod-price {
+    color: rgb(21, 118, 187);
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: rgb(21, 118, 187);
+    border-color: rgb(21, 118, 187);
+    font-family: 'Work Sans', sans-serif;
+    border-radius: 20px;
+}
+
+.card-title {
+    /* font-family: 'Work Sans', sans-serif;
+    color: rgb(75, 86, 109); */
+    color: grey;
+}
+
+.bg-dark {
+    background-color: #0069d9!important;
+    box-shadow: rgba(7, 55, 84, 0.5) 0px 0px 10px 1px;
+}
+
+@media only screen and (max-width: 600px) {
+    .m-4 {
+        margin: 0rem!important;
+    }
+}
+
+.basket-icon {
+    color: white;
+    width: 40px;
+    background: #0069d9;
+    text-align: center;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 20px;
+    padding-top: 4px;
+    transition: transform .3s;
+    margin-right: 7px;
+}
+
+.user-icon {
+    color: #0069d9;
+    width: 40px;
+    background: #ffffff;
+    text-align: center;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 22px;
+    padding-top: 2px;
+    transition: transform .3s;
+    margin-right: 7px;
+}
+
+.user-icon:hover {
+    transform: scale(1.1);
+    box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 6px 1px;
+    cursor: pointer;
+}
+
+.basket-icon:hover {
+    transform: scale(1.1);
+    box-shadow: rgba(7, 55, 84, 0.5) 0px 0px 6px 1px;
+    cursor: pointer;
+}
+
+.h1,
+h1 {
+    font-size: 2.1rem;
+}
+
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+}
+
+.form-control {
+    border-radius: 20px;
 }
