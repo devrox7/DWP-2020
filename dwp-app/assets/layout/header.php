@@ -43,11 +43,11 @@
                     </li>
 
                     <li class="nav-item ">
-                        <a class="nav-link " href="#"><i class="fas fa-money-check-alt"></i>&nbsp;Products</a>
+                        <a href="./Views/Product.view.php" class="nav-link " href="#"><i class="fas fa-money-check-alt"></i>&nbsp;Products</a>
                     </li>
 
                     <li class="nav-item ">
-                        <a class="nav-link disabled " href="#"> <i class="fas fa-user-shield"></i> &nbsp;Admin Panel</a>
+                        <a href="./Views/Admin.view.php" class="nav-link" href="#"> <i class="fas fa-user-shield"></i> &nbsp;Admin Panel</a>
                      </li>
 
                 </ul>
