@@ -1,19 +1,21 @@
 <?php
 include './Models/Product.model.php';
 
-class AdminView extends ProductModel{
+class AdminView extends ProductModel
+{
 
-    public function showProducts(){
+    public function showProducts()
+    {
         $products = $this->getProducts();
         // var_dump($products);
 
-        foreach($products as $product){
+        foreach ($products as $product) {
             echo "<tr>";
-            echo "<td>".$product['ProductID']."</td> ";
-            echo "<td>".$product['Name']."</td>  ";
-            echo "<td>".$product['Price']." kr </td> ";
-            echo "<td>".$product['Code']."  </td> ";
-            echo "<td>".$product['Description']."</td> ";
+            echo "<td>" . $product['ProductID'] . "</td> ";
+            echo "<td>" . $product['Name'] . "</td>  ";
+            echo "<td>" . $product['Price'] . " kr </td> ";
+            echo "<td>" . $product['Code'] . "  </td> ";
+            echo "<td>" . $product['Description'] . "</td> ";
             echo "<td> <img style='width:40px; height: 40px' src='./assets/images/{$product['Image']}'> </td> ";
             echo "<td><button>Delete</button</td> ";
             echo "<td><button>Edit</button</td> ";
@@ -47,7 +49,7 @@ $adminView = new ProductView();
 
 ?>
 
-<html>
+<!-- <html>
 <div class="container">
 <div class="row">
 <table class="table">
@@ -61,18 +63,36 @@ $adminView = new ProductView();
     <th></th>
     <th></th>
   </tr>
-  
+
   <?php
-    $productView->showProducts()
-    ?>
+// $productView->showProducts();
+?>
 
 </table>
 </div>
 
-
-
-        
-
-
 </div>
-</html>
+</html> -->
+
+<?php
+// set page headers
+$page_title = "Products";
+include_once "./assets/layout/header.php";
+
+echo "<table class='table'>
+<tr>
+  <th>ID</th>
+  <th>Name</th>
+  <th>Price</th>
+  <th>Code</th>
+  <th>Description</th>
+  <th>Image</th>
+  <th></th>
+  <th></th>
+</tr>";
+$productView->showProducts();
+echo "</table>";
+// footer
+include_once "./assets/layout/footer.php";
+?>
+

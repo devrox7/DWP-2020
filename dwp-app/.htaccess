@@ -1,0 +1,10 @@
+Options -MultiViews
+
+RewriteEngine On
+
+RewriteBase /dwp2020/dwp-app/
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]

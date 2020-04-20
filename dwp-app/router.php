@@ -1,5 +1,6 @@
 <?php
-class Router{
+class Router
+{
     private $request;
 
     public function __construct($request)
@@ -7,12 +8,14 @@ class Router{
         $this->request = $request;
     }
 
-    public function get($route, $file){
+    public function get($route, $file)
+    {
         $uri = trim($this->request, "/");
         $uri = explode("/", $uri);
-        if($uri[0] == trim($route,"/")){
+        if ($uri[0] == trim($route, "/")) {
             array_shift($uri);
             $args = $uri;
+            echo $args;
             require $file . ".php";
         }
     }

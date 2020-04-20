@@ -5,7 +5,7 @@ body {
 }
 
 .container-fluid {
-    padding-right: 0px !important;
+    /* padding-right: 0px !important; */
     padding-left: 0px !important;
 }
 
@@ -24,6 +24,12 @@ body {
 .nav-link {
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 1px;
+}
+
+.navbar {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
 }
 
 h1,
@@ -100,13 +106,13 @@ h6 {
 }
 
 .bg-dark {
-    background-color: #0069d9!important;
+    background-color: #0069d9 !important;
     box-shadow: rgba(7, 55, 84, 0.5) 0px 0px 10px 1px;
 }
 
 @media only screen and (max-width: 600px) {
     .m-4 {
-        margin: 0rem!important;
+        margin: 0rem !important;
     }
 }
 
