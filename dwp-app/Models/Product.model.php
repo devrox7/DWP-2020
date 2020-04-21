@@ -8,7 +8,7 @@ class ProductModel extends DWPDB
     {
     }
 
-    protected function getProducts()
+    protected function getProductsDB()
     {
         try {
         $query = "SELECT * FROM products";
@@ -23,7 +23,7 @@ class ProductModel extends DWPDB
         }
     }
 
-    protected function getProduct($id)
+    protected function getProductDB($id)
     {
         try {
             $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
@@ -50,7 +50,7 @@ class ProductModel extends DWPDB
 
     }
 
-    protected function createProduct($name, $price, $description)
+    protected function createProductDB($name, $price, $description)
     {
         try {
 
@@ -82,7 +82,7 @@ class ProductModel extends DWPDB
         }
     }
 
-    protected function updateProduct($name, $price, $description)
+    protected function updateProductDB($name, $price, $description)
     {
         // check if form was submitted
         if ($_POST) {
@@ -126,7 +126,7 @@ class ProductModel extends DWPDB
         }
     }
 
-    protected function deleteProduct($name, $price, $description)
+    protected function deleteProductDB($name, $price, $description)
     {
         try {
             // get record ID

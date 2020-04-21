@@ -19,4 +19,10 @@ Route::set('admin-panel', function(){
     require_once 'Views/Admin.view.php';
 
 });
+
+Route::set('contact', function(){
+    // echo "admin paneeel";
+    require_once 'Views/Contact.view.php';
+
+});
 ?>

@@ -1,8 +1,8 @@
 
 <?php
-include_once './Models/Product.model.php';
+include_once './Controllers/Product.controller.php';
 
-class ProductView extends ProductModel
+class ProductView extends ProductController
 {
 
     public function showProducts()
@@ -15,7 +15,7 @@ class ProductView extends ProductModel
 
                 <div class='col-sm-4 col-md-4 col-lg-4 col-xl-2'>
                     <div class='card '>
-                    
+
                         <img  src='./assets/images/{$product['Image']}' class='card-img-top p-1 duck-img' alt='...''>
 
                         <div class='card-body'>

@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS DWPDB;
 CREATE DATABASE DWPDB;
 USE DWPDB;
 
-
+-- CREATE TABLES
 CREATE TABLE Products (
     ProductID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Name varchar(255) NOT NULL,
@@ -24,6 +24,8 @@ CREATE TABLE Orders (
     
 );
 
+
+-- MODIFY TABLES
 ALTER TABLE Product ADD (
     Image text NOT NULL,
     Code varchar(255) NOT NULL
@@ -36,6 +38,14 @@ WHERE ProductID = 1
 UPDATE Products
 SET Image = 'duck02.png', Code ='DS0021'
 WHERE ProductID = 2
+
+ALTER TABLE Products ADD(
+    SpecialOffer boolean
+)
+
+ALTER TABLE Products ADD(
+    SpecialOffer boolean
+)
 
 
 

@@ -37,10 +37,10 @@
 
 
                     <div class="collapse navbar-collapse row " id="navbarNav">
-                        <ul class="navbar-nav col">
+                        <ul class="navbar-nav col ml-2">
 
-                            <li class="nav-item active ">
-                                <a class="nav-link " href="home"> <i class="fas fa-home"></i> Home &nbsp; <span class="sr-only">(current)</span></a>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="home"> <i class="fas fa-home"></i> Home </a>
                             </li>
 
                             <li class="nav-item ">
@@ -48,8 +48,14 @@
                             </li>
 
                             <li class="nav-item ">
-                                <a href="/dwp2020/dwp-app/admin-panel" class="nav-link" href="#"> <i class="fas fa-user-shield"></i> &nbsp;Admin Panel</a>
+                                <a href="contact" class="nav-link" href="#"> <i class="fas fa-address-card"></i> &nbsp;Contact</a>
                             </li>
+
+                            <li class="nav-item ">
+                                <a href="admin-panel" class="nav-link" href="#"> <i class="fas fa-user-shield"></i> &nbsp;Admin Panel</a>
+                            </li>
+
+                            
 
                         </ul>
                     

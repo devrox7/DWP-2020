@@ -1,7 +1,8 @@
 <?php
-include_once './Models/Product.model.php';
+include_once './Controllers/Product.controller.php';
 
-class AdminView extends ProductModel
+
+class AdminView extends ProductController
 {
 
     public function showProducts()
@@ -35,21 +36,35 @@ include_once "./assets/layout/header.php";
 
 echo "
 
-<div class='content-container row m-4 d-flex justify-content-center'>
-<h4><b>Manage Products</b></h4>
-    <table class='table '>
-      <thaed>
-          <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Code</th>
-              <th>Description</th>
-              <th>Image</th>
-              <th></th>
-              <th></th>
-          </tr>
-      </thaed>
+<div class='content-container m-5'>
+
+      <div class='row mb-4'>
+
+        <div class='col'>
+          <h4><b>Manage Products</b></h4>
+        </div>
+
+        <div class='col d-flex justify-content-end'>
+          <button type='button' class='btn btn-primary'>Create Product</button>  
+        </div>
+
+      </div>
+    
+
+
+      <table class='table '>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Code</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
 ";
 
 $adminView->showProducts();
@@ -58,12 +73,25 @@ echo "
 </table>
 </div>
 ";
-echo "
 
-<div class='content-container row mt-5 m-4 d-flex justify-content-center'>
-<h4><b>Manage Orders</b></h4>
+
+
+echo "
+<div class='content-container  m-5'>
+
+      <div class='row mb-4'>
+
+        <div class='col'>
+          <h4><b>Manage Orders</b></h4>
+        </div>
+
+       
+
+      </div>
+    
+
     <table class='table '>
-      <thaed>
+      <thead>
           <tr>
               <th>ID</th>
               <th>Name</th>
@@ -74,7 +102,7 @@ echo "
               <th></th>
               <th></th>
           </tr>
-      </thaed>
+      </thead>
 ";
 
 $adminView->showProducts();
