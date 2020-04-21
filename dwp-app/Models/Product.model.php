@@ -55,7 +55,7 @@ class ProductModel extends DWPDB
         try {
 
             // insert query
-            $query = "INSERT INTO products Name:name, Price:price, Description:description,  Code:code, Image:image";
+            $query = "INSERT INTO products (Name, Price, Description, Code, Image) VALUES (:name,:price,:description,:code,:image)";
 
             // prepare query for execution
             $stmt = $this->connect()->prepare($query);
@@ -64,8 +64,8 @@ class ProductModel extends DWPDB
             $name = htmlspecialchars(strip_tags($name));
             $price = htmlspecialchars(strip_tags($price));
             $description = htmlspecialchars(strip_tags($description));
-            $price = htmlspecialchars(strip_tags($code));
-            $price = htmlspecialchars(strip_tags($image));
+            $code = htmlspecialchars(strip_tags($code));
+            $image = htmlspecialchars(strip_tags($image));
 
             // bind the parameters
             $stmt->bindParam(':name', $name);
@@ -75,14 +75,17 @@ class ProductModel extends DWPDB
             $stmt->bindParam(':image', $image);
 
             // Execute the query
-            if ($stmt->execute()) {
-                echo "<div class='alert alert-success'>New product was saved.</div>";
-            } else {
-                echo "<div class='alert alert-danger'>Unable to create product.</div>";
-            }
+            $stmt->execute();
+            return true;
+            // if () {
+            //     echo "<div class='alert alert-success'>New product was saved.</div>";
+            // } else {
+            //     echo "<div class='alert alert-danger'>Unable to create product.</div>";
+            // }
 
         } catch (PDOException $exception) {
-            die('ERROR: ' . $exception->getMessage());
+            echo 'ERROR: ' . $exception->getMessage();
+            return false;
         }
     }
 
@@ -130,11 +133,11 @@ class ProductModel extends DWPDB
         }
     }
 
-    protected function deleteProductDB($name, $price, $description)
+    protected function deleteProductDB($id)
     {
         try {
             // get record ID
-            $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
+            // $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
 
             // delete query
             $query = "DELETE FROM products WHERE id = ?";

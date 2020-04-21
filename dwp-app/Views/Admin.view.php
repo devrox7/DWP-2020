@@ -20,7 +20,7 @@ class AdminView extends ProductController
             echo "<td>" . $product['Description'] . "</td> ";
             echo "<td> <img style='width:40px; height: 40px' src='./assets/images/{$product['Image']}'> </td> ";
             echo "<td><button type='button' class='btn btn-primary'><i class='fas fa-pen'></i></button</td> ";
-            echo "<td><button type='button' class='btn btn-primary'><i class='fas fa-trash'></i></button</td> ";
+            echo "<td><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#deleteProductModal'><i class='fas fa-trash'></i></button</td> ";
 
             echo "</tr>";
 
@@ -31,6 +31,10 @@ class AdminView extends ProductController
     public function createNewProduct($name, $price, $description, $code, $image){
          $this->createProduct($name, $price, $description, $code, $image);
     }
+
+    public function deleteProduct($id){
+      $this->deleteProduct($id);
+ }
 }
 
 $adminView = new AdminView();
@@ -51,12 +55,18 @@ if($_POST){
    $description = $_POST['description'];
    $code = $_POST['code'];
    $image = $_POST['image'];
-   var_dump($name);
  
    // create the product
    $adminView->createNewProduct($name, $price, $description, $code, $image);
     break;
+
+    case 'deleteProduct':
+      $id = $_GET['$productID'];
+      
+      $adminView->deleteProduct($id);
+    break;
  }
+
  
  }
  
@@ -75,8 +85,6 @@ echo "
         </div>
 
       </div>
-    
-
 
       <table class='table table-responsive'>
         <thead>
@@ -92,43 +100,32 @@ echo "
             </tr>
         </thead>
 ";
-
 $adminView->showProducts();
-
 echo "
 </table>
 </div>
 ";
 
 
-
 echo "
 <div class='content-container  m-5'>
-
       <div class='row mb-4'>
-
         <div class='col'>
           <h4><b>Manage Orders</b></h4>
         </div>
-
       </div>
-      
       <p>Work in progress</p>
-    
   </div>
 ";
 
 
 echo "
 <div class='content-container  m-5'>
-
       <div class='row mb-4'>
-
         <div class='col'>
           <h4><b>Manage Company Details</b></h4>
         </div>
       </div>
-    
       <p>Work in progress</p>
 </div>
 ";
@@ -139,10 +136,11 @@ include_once "./assets/layout/footer.php";
 ?>
 
 
+<!-- Create Product Modal -->
 
 <div class="modal fade bd-example-modal-lg" id="createProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
+    <div class="modal-content p-5">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Create new Product</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -191,6 +189,33 @@ include_once "./assets/layout/footer.php";
       </div>
 
 
+      
+    </div>
+  </div>
+</div>
+
+<!-- Delete Prodcut Modal -->
+<div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="deleteProductModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteProductModal">Delete Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      <form action="admin-panel" method="post">
+      <input type='hidden' name='action' value='deleteProduct'>
+      <input type='hidden' name='productID' value='deleteProduct'>
+      <p>Are you sure you want to delete this?</p>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Delete</button>
+      </div>
+      </form>
+      </div>
       
     </div>
   </div>
