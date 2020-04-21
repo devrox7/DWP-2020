@@ -10,8 +10,8 @@ class ProductController extends ProductModel{
         
     }
 
-    public function createProduct($name, $price, $description){
-        $this->setProduct($name, $price, $description);
+    public function createProduct($name, $price, $description, $code, $image){
+        $this->createProductDB($name, $price, $description,$code, $image);
     }
 
 }

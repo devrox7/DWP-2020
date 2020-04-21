@@ -25,6 +25,8 @@ CREATE TABLE Orders (
 );
 
 
+
+
 -- MODIFY TABLES
 ALTER TABLE Product ADD (
     Image text NOT NULL,

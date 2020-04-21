@@ -210,6 +210,17 @@ h1 {
     cursor: pointer;
 }
 
-.nav-link:active {
-    color: red;
+.modal-content {
+    border: none;
+    border-radius: 30px;
+    box-shadow: rgb(50, 71, 83) 0px 10px 20px 0px;
+}
+
+.custom-file-label::after {
+    content: "Search";
+    border-radius: 20px;
+}
+
+.custom-file-label {
+    border-radius: 20px;
 }

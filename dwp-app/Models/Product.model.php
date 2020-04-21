@@ -50,31 +50,35 @@ class ProductModel extends DWPDB
 
     }
 
-    protected function createProductDB($name, $price, $description)
+    protected function createProductDB($name, $price, $description, $code, $image)
     {
         try {
 
             // insert query
-            $query = "INSERT INTO products Name:name, Description:description, Price:price";
+            $query = "INSERT INTO products Name:name, Price:price, Description:description,  Code:code, Image:image";
 
             // prepare query for execution
             $stmt = $this->connect()->prepare($query);
 
             // posted values
-            $name = htmlspecialchars(strip_tags($_POST['name']));
-            $description = htmlspecialchars(strip_tags($_POST['description']));
-            $price = htmlspecialchars(strip_tags($_POST['price']));
+            $name = htmlspecialchars(strip_tags($name));
+            $price = htmlspecialchars(strip_tags($price));
+            $description = htmlspecialchars(strip_tags($description));
+            $price = htmlspecialchars(strip_tags($code));
+            $price = htmlspecialchars(strip_tags($image));
 
             // bind the parameters
             $stmt->bindParam(':name', $name);
-            $stmt->bindParam(':description', $description);
             $stmt->bindParam(':price', $price);
+            $stmt->bindParam(':description', $description);
+            $stmt->bindParam(':code', $code);
+            $stmt->bindParam(':image', $image);
 
             // Execute the query
-            if ($stmt->execute([$name, $price, $description])) {
-                echo "<div class='alert alert-success'>Record was saved.</div>";
+            if ($stmt->execute()) {
+                echo "<div class='alert alert-success'>New product was saved.</div>";
             } else {
-                echo "<div class='alert alert-danger'>Unable to save record.</div>";
+                echo "<div class='alert alert-danger'>Unable to create product.</div>";
             }
 
         } catch (PDOException $exception) {
