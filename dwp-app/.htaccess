@@ -1,5 +1,5 @@
 Options -MultiViews
-DirectoryIndex Views/Home.view.php
+
 
 RewriteEngine On
 
