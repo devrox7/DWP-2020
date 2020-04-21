@@ -1,9 +1,3 @@
-<?php
-// include './Controllers/Product.controller.php';
-// include 'router.php';
-
-?>
-
 <!DOCTYPE HTML>
 
 <html lang="en">
@@ -14,36 +8,25 @@
   <title>DUCK SHOP</title>
   <meta name="description" content="DUCK SHOP">
 
-
-
 </head>
 
-<body>
-<?php
+<body></body>
 
-// $product1 = new ProductView();
-// $product1->showProducts();
-
-// $product2 = new ProductController();
-// $product2->createProduct("NewDuck","500", "Newest duck in the shop");
-?>
-<?php
-require_once 'Views/Product.view.php';
-require_once 'Views/Admin.view.php';
-
-require_once "router.php";
-echo "test";
-$request = $_SERVER['REQUEST_URI'];
-$router = new Router($request);
-
-$router->get('/', 'Views/Home.view');
-$router->get('home', 'Views/Home.view');
-$router->get('admin-panel', 'Views/Admin.view');
-$router->get('products', 'Views/Product.view');
-
-echo $_GET['url'];
-echo $this->request;
-?>
-
-</body>
 </html>
+
+<?php
+
+require_once("routes.php");
+require_once("router.php");
+
+
+
+spl_autoload_register(function($view) {
+  if(file_exists('classes/' . $view . '.view.php')){
+    include 'classes/' . $view . '.view.php';
+  }
+ 
+});
+
+
+?>

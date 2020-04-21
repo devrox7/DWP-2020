@@ -1,5 +1,5 @@
 <?php
-include './Models/Product.model.php';
+include_once './Models/Product.model.php';
 
 class AdminView extends ProductModel
 {
@@ -45,41 +45,15 @@ class AdminView extends ProductModel
     }
 }
 
-$adminView = new ProductView();
+$adminView = new AdminView();
 
-?>
 
-<!-- <html>
-<div class="container">
-<div class="row">
-<table class="table">
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Code</th>
-    <th>Description</th>
-    <th>Image</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  <?php
-// $productView->showProducts();
-?>
-
-</table>
-</div>
-
-</div>
-</html> -->
-
-<?php
-// set page headers
-$page_title = "Products";
+$page_title = "Admin Panel";
 include_once "./assets/layout/header.php";
 
-echo "<table class='table'>
+echo "<div class='row m-5 d-flex justify-content-center'>
+<table class='table table-hover ' style='background-color:white'>
+<thaed>
 <tr>
   <th>ID</th>
   <th>Name</th>
@@ -89,9 +63,14 @@ echo "<table class='table'>
   <th>Image</th>
   <th></th>
   <th></th>
-</tr>";
-$productView->showProducts();
-echo "</table>";
+</tr>
+</thaed>
+";
+$adminView->showProducts();
+
+echo "</table>
+</div>
+";
 // footer
 include_once "./assets/layout/footer.php";
 ?>

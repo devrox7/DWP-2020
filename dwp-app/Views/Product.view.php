@@ -1,6 +1,6 @@
 
 <?php
-require_once './Models/Product.model.php';
+include_once './Models/Product.model.php';
 
 class ProductView extends ProductModel
 {
@@ -41,6 +41,13 @@ $productView = new ProductView();
 
 
 <?php
+// require_once "router.php";
+// $request = $_SERVER['REQUEST_URI'];
+// $router = new Router($request);
+
+// $router->get('/products', 'Views/Product.view');
+
+
 // set page headers
 $page_title = "Products";
 include_once "./assets/layout/header.php";

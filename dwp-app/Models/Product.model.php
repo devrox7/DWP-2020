@@ -1,5 +1,5 @@
 <?php
-include './dbconn.php';
+include_once './dbconn.php';
 
 class ProductModel extends DWPDB
 {
@@ -10,12 +10,17 @@ class ProductModel extends DWPDB
 
     protected function getProducts()
     {
+        try {
         $query = "SELECT * FROM products";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute();
 
         $result = $stmt->fetchAll();
         return $result;
+        }
+        catch (PDOException $exception) {
+            die('ERROR: ' . $exception->getMessage());
+        }
     }
 
     protected function getProduct($id)

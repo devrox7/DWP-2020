@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex">
 
     <img class="duck-logo" src="./assets/images/logo.png">
-    <a class="navbar-brand" href="#">DUCK SHOP</a>
+    <a class="navbar-brand" href="home">DUCK SHOP</a>
 
 
 
@@ -48,7 +48,7 @@
                     </li>
 
                     <li class="nav-item ">
-                        <a href="admin-panel" class="nav-link" href="#"> <i class="fas fa-user-shield"></i> &nbsp;Admin Panel</a>
+                        <a href="/dwp2020/dwp-app/admin-panel" class="nav-link" href="#"> <i class="fas fa-user-shield"></i> &nbsp;Admin Panel</a>
                      </li>
 
                 </ul>

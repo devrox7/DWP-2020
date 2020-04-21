@@ -1,5 +1,5 @@
 <?php
-// include './Models/Product.model.php';
+include_once './Models/Product.model.php';
 
 
 

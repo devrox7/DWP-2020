@@ -1,23 +1,19 @@
 <?php
-class Router
+
+class Route
 {
-    private $request;
 
-    public function __construct($request)
-    {
-        $this->request = $request;
+    public static $validRoutes = array();
+
+    public static function set($route,$function){
+        self::$validRoutes[] = $route;
+
+
+    if ($_GET['url'] == $route) {
+        $function->__invoke();
+     }
+        
     }
-
-    public function get($route, $file)
-    {
-        $uri = trim($this->request, "/");
-        $uri = explode("/", $uri);
-        if ($uri[0] == trim($route, "/")) {
-            array_shift($uri);
-            $args = $uri;
-            echo $args;
-            require $file . ".php";
-        }
-    }
-
 }
+
+?>
