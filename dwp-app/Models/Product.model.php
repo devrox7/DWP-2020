@@ -26,24 +26,19 @@ class ProductModel extends DWPDB
     protected function getProductDB($id)
     {
         try {
-            $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
-
-            $query = "SELECT * FROM products WHERE ProductID = ? LIMIT 0,1";
+            $query = "SELECT * FROM products WHERE ProductID = :id LIMIT 0,1";
 
             $stmt = $this->connect()->prepare($query);
 
             // this is the first question mark
-            $stmt->bindParam(1, $id);
+            $stmt->bindParam(':id', $id);
 
-            $stmt->execute([$id]);
+            $stmt->execute();
 
             // store retrieved row to a variable
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $row;
 
-            // values to fill up our form
-            $name = $row['name'];
-            $description = $row['description'];
-            $price = $row['price'];
         } catch (PDOException $exception) {
             die('ERROR: ' . $exception->getMessage());
         }
@@ -89,68 +84,55 @@ class ProductModel extends DWPDB
         }
     }
 
-    protected function updateProductDB($name, $price, $description)
+    protected function updateProductDB($name, $price, $description, $code, $image, $id)
     {
-        // check if form was submitted
-        if ($_POST) {
-
             try {
 
-                // write update query
-                // in this case, it seemed like we have so many fields to pass and
-                // it is better to label them and not use question marks
                 $query = "UPDATE products
-                        SET name=:name, description=:description, price=:price
-                        WHERE id = :id";
+                        SET Name=:name, Description=:description, Price=:price, Code=:code, Image=:image
+                        WHERE ProductID = :id";
 
                 // prepare query for excecution
-                $stmt = $con->prepare($query);
+                $stmt = $this->connect()->prepare($query);
 
                 // posted values
                 $name = htmlspecialchars(strip_tags($_POST['name']));
                 $description = htmlspecialchars(strip_tags($_POST['description']));
                 $price = htmlspecialchars(strip_tags($_POST['price']));
+                $code = htmlspecialchars(strip_tags($_POST['code']));
+                $image = htmlspecialchars(strip_tags($_POST['image']));
+                $id = htmlspecialchars(strip_tags($_POST['id']));
 
                 // bind the parameters
                 $stmt->bindParam(':name', $name);
                 $stmt->bindParam(':description', $description);
                 $stmt->bindParam(':price', $price);
+                $stmt->bindParam(':code', $price);
+                $stmt->bindParam(':image', $price);
                 $stmt->bindParam(':id', $id);
 
                 // Execute the query
-                if ($stmt->execute()) {
-                    echo "<div class='alert alert-success'>Record was updated.</div>";
-                } else {
-                    echo "<div class='alert alert-danger'>Unable to update record. Please try again.</div>";
-                }
-
+                $stmt->execute();
+                return true;
             }
 
             // show errors
              catch (PDOException $exception) {
                 die('ERROR: ' . $exception->getMessage());
             }
-        }
     }
+
 
     protected function deleteProductDB($id)
     {
         try {
-            // get record ID
-            // $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
-
             // delete query
-            $query = "DELETE FROM products WHERE id = ?";
-            $stmt = $con->prepare($query);
-            $stmt->bindParam(1, $id);
+            $query = "DELETE FROM products WHERE ProductID = :id";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
 
-            if ($stmt->execute()) {
-                // redirect to read records page and
-                // tell the user record was deleted
-                header('Location: index.php?action=deleted');
-            } else {
-                die('Unable to delete record.');
-            }
+            return true;
         }
 
         // show error
