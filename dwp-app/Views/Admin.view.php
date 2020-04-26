@@ -3,7 +3,6 @@ include_once './Controllers/Product.controller.php';
 
 class AdminView extends ProductController
 {
-
     public function showProducts()
     {
         $products = $this->getProducts();
@@ -17,7 +16,7 @@ class AdminView extends ProductController
             echo "<td>" . $product['Code'] . "  </td> ";
             echo "<td>" . $product['Description'] . "</td> ";
             echo "<td> <img style='width:40px; height: 40px' src='./assets/images/{$product['Image']}'> </td> ";
-            echo "<td><button type='button' class='btn btn-primary'><i class='fas fa-pen'></i></button</td> ";
+            echo "<td><button type='button' class='btn btn-primary open-update-modal' data-toggle='modal' data-target='#updateProductModal' data-product='".base64_encode(json_encode($product))."'><i class='fas fa-pen' ></i></button</td> ";
             echo "<td><button type='button' class='btn btn-primary open-delete-modal' data-toggle='modal' data-target='#deleteProductModal' data-product-id='".$product['ProductID']."'><i class='fas fa-trash'></i></button</td> ";
             echo "</tr>";
         }
@@ -28,19 +27,24 @@ class AdminView extends ProductController
       
     }
 
+    public function updateProductView($id, $name, $price, $description, $code, $image){
+      $this->updateProduct($id, $name, $price, $description, $code, $image);
+    }
+
     public function deleteProductView($id){
       $this->deleteProduct($id);
     }
-
 }
 
+
 $adminView = new AdminView();
+
 
 $page_title = "Admin Panel";
 include_once "./assets/layout/header.php";
 
 
-// CRUD ACTIONS 
+// ACTIONS 
 if($_POST){
 
       switch($_POST['action'])
@@ -67,6 +71,21 @@ if($_POST){
             // die();
 
             $adminView->deleteProductView($id);
+        break;
+
+
+        case 'updateProduct':
+          $id = $_POST['productID'];
+          $name = $_POST['name'];
+          $price = $_POST['price'];
+          $description = $_POST['description'];
+          $code = $_POST['code'];
+          $image = $_POST['image'];
+
+          // var_dump($_POST);
+          // die();
+
+          $adminView->updateProductView($id, $name, $price, $description, $code, $image);
         break;
     }
 
@@ -120,7 +139,7 @@ echo "
   </div>";
 
 
-// MANAGE COMPANY DETAILS TAB;E
+// MANAGE COMPANY DETAILS TABLE
 echo "
 <div class='content-container  m-5'>
       <div class='row mb-4'>
@@ -139,7 +158,8 @@ include_once "./assets/layout/footer.php";
 
 
 
-<!-- CREATE PRODUCT MODAL -->
+<!-- CREATE PRODUCT ---------------------------------------------------------------------------------------------------------------------------------------------->
+
 <div class="modal fade bd-example-modal-lg" id="createProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content p-5">
@@ -195,9 +215,10 @@ include_once "./assets/layout/footer.php";
 
 
 
-<!-- DELETE PRODUCT SCRIPT -->
+<!-- DELETE PRODUCT -------------------------------------------------------------------------------------------------------------------------------------->
+
 <script>
-$(document).on("click", ".open-delete-modal", function(e) {
+$(document).on("click", ".open-delete-modal", function() {
 
     // //get data-id attribute of the clicked element
     // var productID = $(e.relatedTarget).data('product-id');
@@ -211,9 +232,7 @@ $(document).on("click", ".open-delete-modal", function(e) {
 });
 </script>
 
-
-<!-- DELETE PRODUCT MODAL -->
-<div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="deleteProductModal" aria-hidden="true">
+<div class="modal fade " id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="deleteProductModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
   <div class="modal-content">
       <div class="modal-header">
@@ -227,7 +246,7 @@ $(document).on("click", ".open-delete-modal", function(e) {
       <form action="admin-panel" method="post">
 
       <input type='hidden' name='action' value='deleteProduct'>
-      <input type='hidden' name='productID' value='deleteProduct'>
+      <input type='hidden' name='productID'>
 
       <p>Are you sure you want to delete this?</p>
       <div class="modal-footer">
@@ -237,6 +256,89 @@ $(document).on("click", ".open-delete-modal", function(e) {
       </form>
       </div>
       
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- CREATE PRODUCT -------------------------------------------------------------------------------------------------------------------------------------->
+
+<script>
+$(document).on("click", ".open-update-modal", function() {
+
+var productB64 = $(this).data('product');
+var productJSON = atob(productB64);
+var product = JSON.parse(productJSON);
+console.log(product);
+console.log(productJSON);
+console.log(productB64);
+
+$("#updateProductModal input[name='productID']").val( product.ProductID );
+$("#updateProductModal input[name='name']").val( product.Name );
+$("#updateProductModal input[name='price']").val( product.Price );
+$("#updateProductModal textarea[name='description']").val( product.Description );
+$("#updateProductModal input[name='code']").val( product.Code );
+$("#updateProductModal input[name='image']").val( product.Image );
+});
+</script>
+
+<div class="modal fade bd-example-modal-lg" id="updateProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content p-5">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form action="admin-panel" method="post">
+
+          <input type='hidden' name='action' value='updateProduct'>
+      <input type='hidden' name='productID'>
+
+
+        <div class="form-group">
+          <label for="name">Product Name</label>
+          <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name='name' placeholder="Product Name">
+          <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        <div class="form-group">
+          <label for="price">Product Price</label>
+          <input type="text" class="form-control" id="price" name='price' placeholder="Price">
+        </div>
+        <div class="form-group">
+        <label for="description">Product Description</label>
+        <textarea class="form-control" id="description" name='description' rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+        <label for="code">Product Code</label>
+        <input type="text" class="form-control" id="code" name='code' rows="3"></input>
+        </div>
+
+        <!-- <div class='form-group'>
+        <label for="code">Current Image</label>
+        <input type="text" class="form-control" disabled name="image" id="image" placeholder='image'>
+        </div> -->
+
+        <div class="form-group" >
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="image" name='image'>
+            <label for="image" class="custom-file-label">Select Product Image...</label>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </div> 
+        </form>
+      </div>
+
     </div>
   </div>
 </div>

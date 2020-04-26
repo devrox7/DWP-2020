@@ -84,10 +84,10 @@ class ProductModel extends DWPDB
         }
     }
 
-    protected function updateProductDB($name, $price, $description, $code, $image, $id)
+    protected function updateProductDB($id, $name, $price, $description, $code, $image)
     {
             try {
-
+              
                 $query = "UPDATE products
                         SET Name=:name, Description=:description, Price=:price, Code=:code, Image=:image
                         WHERE ProductID = :id";
@@ -96,21 +96,22 @@ class ProductModel extends DWPDB
                 $stmt = $this->connect()->prepare($query);
 
                 // posted values
-                $name = htmlspecialchars(strip_tags($_POST['name']));
-                $description = htmlspecialchars(strip_tags($_POST['description']));
-                $price = htmlspecialchars(strip_tags($_POST['price']));
-                $code = htmlspecialchars(strip_tags($_POST['code']));
-                $image = htmlspecialchars(strip_tags($_POST['image']));
-                $id = htmlspecialchars(strip_tags($_POST['id']));
+                $id = htmlspecialchars(strip_tags($id));
+                $name = htmlspecialchars(strip_tags($name));
+                $description = htmlspecialchars(strip_tags($description));
+                $price = htmlspecialchars(strip_tags($price));
+                $code = htmlspecialchars(strip_tags($code));
+                $image = htmlspecialchars(strip_tags($image));
 
                 // bind the parameters
                 $stmt->bindParam(':name', $name);
                 $stmt->bindParam(':description', $description);
                 $stmt->bindParam(':price', $price);
-                $stmt->bindParam(':code', $price);
-                $stmt->bindParam(':image', $price);
+                $stmt->bindParam(':code', $code);
+                $stmt->bindParam(':image', $image);
                 $stmt->bindParam(':id', $id);
 
+                
                 // Execute the query
                 $stmt->execute();
                 return true;

@@ -10,6 +10,16 @@ class ProductController extends ProductModel{
         
     }
 
+    protected function getProduct($id){
+        $this->getProductDB($id);
+        
+    }
+
+    protected function updateProduct($id, $name, $price, $description, $code, $image){
+        $this->updateProductDB($id, $name, $price, $description, $code, $image);
+        
+    }
+
     protected function createProduct($name, $price, $description, $code, $image){
         $this->createProductDB($name, $price, $description,$code, $image);
     }
