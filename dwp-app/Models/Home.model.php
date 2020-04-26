@@ -27,7 +27,7 @@ class HomeModel extends DWPDB
     protected function getLatestProductsDB()
     {
         try {
-        $query = "SELECT * FROM products ORDER BY ProductID DESC LIMIT 3";
+        $query = "SELECT * FROM products ORDER BY ProductID DESC LIMIT 4";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute();
 

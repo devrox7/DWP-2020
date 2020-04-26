@@ -4,7 +4,7 @@ include_once './Controllers/Home.controller.php';
 class ProductView extends HomeController
 {
 
-    public function showProducts()
+    public function showOfferProducts()
     {
         $offers = $this->getSpecialOffers();
         // var_dump($offers);
@@ -52,8 +52,7 @@ class ProductView extends HomeController
         // var_dump($offers);
 
         foreach ($latestProducts as $product) {
-            echo "
-
+                echo "
                 <div class='col-sm-4 col-md-4 col-lg-4 col-xl-2'>
                     <div class='card '>
 
@@ -61,7 +60,7 @@ class ProductView extends HomeController
 
                         <div class='card-body'>
 
-                            <h5 class='card-title'>" . $product['Name'] . "</h5>
+                            <h5 class='card-title'>" .  $product['Name']. "</h5>
 
                             <p class='prod-price mb-2'>" . $product['Price'] . " kr </p>
 
@@ -102,14 +101,17 @@ echo "
 <div class='row mt-5 m-4 d-flex justify-content-center'>
 
     <div class='row' style='display:inline-block'>  
-        <h1>WELCOME TO THE RUBBER DUCK SHOP 22</h1>
+        <h1>WELCOME TO THE RUBBER DUCK SHOP</h1>
         </br>
         <h3 style='text-align:center'>See our Special Offers</h3>
     </div>
 
     <div class='row m-4 d-flex justify-content-center'>";
 
-        $productView->showProducts();
+        $productView->showOfferProducts();
+
+
+
 
 echo "</div>
 
@@ -117,13 +119,18 @@ echo "</div>
 
 echo "<div class='row mt-5 m-4 d-flex justify-content-center'>
 
-    <div class='row' style='display:inline-block'>
-        <h3 style='text-align:center'>Newest Additions</h3>
-    </div>
+<div class='row' style='display:inline-block'>  
+        
+        </br>
+        <h3 style='text-align:center'>See our Latest Products</h3>
+        </div>
+
 
     <div class='row m-4 d-flex justify-content-center'>";
 
        $productView->showLatestProducts();
+
+
 
 echo "</div>
 
