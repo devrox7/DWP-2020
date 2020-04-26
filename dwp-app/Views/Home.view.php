@@ -100,30 +100,33 @@ include_once "./assets/layout/header.php";
 // SPECIAL OFFERS
 echo "
 <div class='row mt-5 m-4 d-flex justify-content-center'>
+
     <div class='row' style='display:inline-block'>  
-        <h1>WELCOME TO THE RUBBER DUCK SHOP</h1>
+        <h1>WELCOME TO THE RUBBER DUCK SHOP 22</h1>
         </br>
         <h3 style='text-align:center'>See our Special Offers</h3>
     </div>
 
-       <div class='row m-4 d-flex justify-content-center'>";
+    <div class='row m-4 d-flex justify-content-center'>";
 
         $productView->showProducts();
 
- echo "</div>
+echo "</div>
 
-</div> 
+</div>";
 
-<div class='row mt-5 m-4 d-flex justify-content-center'>
+echo "<div class='row mt-5 m-4 d-flex justify-content-center'>
+
     <div class='row' style='display:inline-block'>
         <h3 style='text-align:center'>Newest Additions</h3>
     </div>
 
-       <div class='row m-4 d-flex justify-content-center'>";
+    <div class='row m-4 d-flex justify-content-center'>";
 
-        $productView->showLatestProducts();
+       $productView->showLatestProducts();
 
- echo "</div>
+echo "</div>
+
 </div>";
 
 

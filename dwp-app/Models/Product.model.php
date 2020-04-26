@@ -27,12 +27,9 @@ class ProductModel extends DWPDB
     {
         try {
             $query = "SELECT * FROM products WHERE ProductID = :id LIMIT 0,1";
-
             $stmt = $this->connect()->prepare($query);
-
             // this is the first question mark
             $stmt->bindParam(':id', $id);
-
             $stmt->execute();
 
             // store retrieved row to a variable
@@ -72,11 +69,6 @@ class ProductModel extends DWPDB
             // Execute the query
             $stmt->execute();
             return true;
-            // if () {
-            //     echo "<div class='alert alert-success'>New product was saved.</div>";
-            // } else {
-            //     echo "<div class='alert alert-danger'>Unable to create product.</div>";
-            // }
 
         } catch (PDOException $exception) {
             echo 'ERROR: ' . $exception->getMessage();
