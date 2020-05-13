@@ -9,10 +9,12 @@
     <title><?php echo $page_title; ?></title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"  rel="stylesheet">
-<!-- Font Awesome Icons -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-  <link href="./assets/styles.css"  rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="./assets/styles.css"  rel="stylesheet">
 
+    <script src="https://www.google.com/recaptcha/api.js?render=<?php echo SITE_KEY ?>"></script>
+        
 </head>
 
 <body>
@@ -77,10 +79,10 @@
         <?php
         // show page header
         echo "
-                <div class=' page-header ml-4 pt-4'>
+                <div class=' page-header ml-4 pt-5'>
                     <div class='row d-flex justify-content-around'>
 
-                        <div class='col'><h1>{$page_title}</h1></div>
+                        <div class='col-12 text-center'><h1>{$page_title}</h1></div>
 
                         <div   data-toggle='tooltip' data-placement='left' title='Shopping Basket' class='col d-flex justify-content-end'>
                             <div class='basket-icon' >
