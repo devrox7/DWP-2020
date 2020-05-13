@@ -23,6 +23,7 @@ class AdminView extends ProductController
     }
 
     public function createProductView($name, $price, $description, $code, $image){
+      
       $this->createProduct($name, $price, $description, $code, $image);
       
     }
@@ -32,6 +33,9 @@ class AdminView extends ProductController
     }
 
     public function deleteProductView($id){
+
+
+      
       $this->deleteProduct($id);
     }
 }
@@ -46,10 +50,15 @@ include_once "./assets/layout/header.php";
 
 // ACTIONS 
 if($_POST){
+  if (empty($_POST['token']) || !hash_equals($_SESSION['token'], $_POST['token'])) {
+    die('CSRF VALIDATION FAILED');
+  }
+  unset($_SESSION['token']);
+
 
       switch($_POST['action'])
       {
-        
+
         case 'createProduct':
                 
             // set product property values from form
@@ -174,6 +183,9 @@ include_once "./assets/layout/footer.php";
         <form action="admin-panel" method="post">
 
           <input type='hidden' name='action' value='createProduct'>
+          <input type="hidden" name="token" value="<?php echo $csfr_token; ?>" />
+
+          
 
         <div class="form-group">
           <label for="name">Product Name</label>
@@ -182,7 +194,7 @@ include_once "./assets/layout/footer.php";
         </div>
         <div class="form-group">
           <label for="price">Product Price</label>
-          <input type="text" class="form-control" id="price" name='price' placeholder="Price">
+          <input type="number" class="form-control" id="price" name='price' placeholder="Price">
         </div>
         <div class="form-group">
         <label for="description">Product Description</label>
@@ -247,6 +259,8 @@ $(document).on("click", ".open-delete-modal", function() {
 
       <input type='hidden' name='action' value='deleteProduct'>
       <input type='hidden' name='productID'>
+      <input type="hidden" name="token" value="<?php echo $csfr_token; ?>" />
+
 
       <p>Are you sure you want to delete this?</p>
       <div class="modal-footer">
@@ -263,7 +277,7 @@ $(document).on("click", ".open-delete-modal", function() {
 
 
 
-<!-- CREATE PRODUCT -------------------------------------------------------------------------------------------------------------------------------------->
+<!-- UPDATE PRODUCT -------------------------------------------------------------------------------------------------------------------------------------->
 
 <script>
 $(document).on("click", ".open-update-modal", function() {
@@ -298,7 +312,8 @@ $("#updateProductModal input[name='image']").val( product.Image );
         <form action="admin-panel" method="post">
 
           <input type='hidden' name='action' value='updateProduct'>
-      <input type='hidden' name='productID'>
+          <input type='hidden' name='productID'>
+          <input type="hidden" name="token" value="<?php echo $csfr_token; ?>" />
 
 
         <div class="form-group">
