@@ -10,7 +10,7 @@ class LoginModel extends DWPDB{
         try {
 
             // insert query
-            $query = "SELECT UserID, Email, Password, RoleID FROM users WHERE Email = :email LIMIT 1";
+            $query = "SELECT UserID, Email, Password, Name, RoleID FROM users WHERE Email = :email LIMIT 1";
 
             // prepare query for execution
             $stmt = $this->connect()->prepare($query);
@@ -33,6 +33,7 @@ class LoginModel extends DWPDB{
                 {
                     $_SESSION['UserID'] = $found_user['UserID'];
                     $_SESSION['Email'] = $found_user['Email'];
+                    $_SESSION['Name'] = $found_user['Name'];
                     $_SESSION['RoleID'] = $found_user['RoleID'];
                     return true;
                 }

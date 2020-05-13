@@ -9,7 +9,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: rgba(7, 93, 82, 0.04) 0px 0px 4px 0px, rgba(10, 74, 51, 0.08) 0px 8px 16px 0px;
-    border-bottom: 5px solid rgba(21, 80, 187, 0.67) !important;
+    border-bottom: 3px solid rgba(21, 80, 187, 0.39) !important;
 }
 
 .table th:first-of-type {
@@ -124,12 +124,12 @@ h6 {
     background-color: rgb(21, 118, 187);
     border-color: rgb(21, 118, 187);
     font-family: 'Work Sans', sans-serif;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .btn {
     padding: 5px 9px;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .card-title {
@@ -236,4 +236,11 @@ h1 {
 
 a {
     color: white !important;
+}
+
+.logged-user {
+    color: white !important;
+    margin: 8px !important;
+    font-family: 'Poppins', sans-serif !important;
+    letter-spacing: 1px !important;
 }

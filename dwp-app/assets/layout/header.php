@@ -53,9 +53,17 @@
                                 <a href="contact" class="nav-link" href="#"> <i class="fas fa-address-card"></i> &nbsp;Contact</a>
                             </li>
 
-                            <li class="nav-item ">
-                                <a href="admin-panel" class="nav-link" href="#"> <i class="fas fa-user-shield"></i> &nbsp;Admin Panel</a>
-                            </li>
+                            <?php if($_SESSION['RoleID'] == 1 )
+                            { ?>
+
+                                <li class="nav-item ">
+                                    <a href="admin-panel" class="nav-link" href="#"> <i class="fas fa-user-shield"></i> &nbsp;Admin Panel</a>
+                                </li>
+                            
+                             <?php } ?>
+                            
+
+                            
 
                             
 
@@ -64,9 +72,20 @@
 
 
                         <div class="col d-flex justify-content-end">
-                            <!-- <div class="login-text">SIGN UP/LOG IN &nbsp;</div> -->
+
+                        <?php if( isset($_SESSION['UserID']) && !empty($_SESSION['UserID']) )
+                        {
+                            
+                        ?>
+                            <div class="logged-user"><?php echo $_SESSION['Name'] ?> </div>
+                            <a href="logout"  class="btn btn-outline-light btn-sm  m-1 mr-2"> Logout </a>
+
+                        <?php }else{ ?>
                             <a href="register"  class="btn btn-outline-light btn-sm  m-1"> Sing Up </a>
                             <a href="login" class="btn btn-outline-light btn-sm m-1 mr-3"> Log In </a>
+                        <?php } ?>
+                            <!-- <div class="login-text">SIGN UP/LOG IN &nbsp;</div> -->
+                            
                             <div class="user-icon "> <i class="fas fa-user"></i></div>
                         </div>
 

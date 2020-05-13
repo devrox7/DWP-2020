@@ -40,7 +40,7 @@ if($_POST)
         if($return->success == true && $return->score > 0.5){
             // echo "<div class='alert alert-success'>Succes!</div>";
             $loginView->loginUser($email, $password);
-            redirect_to("DWP-2020/dwp-app/home");
+            redirect_to("home");
         }
         else
         {

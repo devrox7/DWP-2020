@@ -45,7 +45,7 @@ if($_POST)
         if($return->success == true && $return->score > 0.5){
             // echo "<div class='alert alert-success'>Succes!</div>";
             $registerView->registerUser($email, $password, $name, $phone, $address, $city, $zip);
-            redirect_to("DWP-2020/dwp-app/login");
+            redirect_to("login");
         }
         else
         {
@@ -84,7 +84,7 @@ echo"
             
 
             <div class='d-flex justify-content-center'>
-                <button type='submit' class='btn btn-primary  mt-3 mb-3' name='submit'>Register</button>
+                <button type='submit' class='btn btn-primary  mt-3 mb-3' name='submit'>Login</button>
             </div>
         </form>
     </div>
