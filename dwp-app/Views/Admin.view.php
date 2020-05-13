@@ -50,10 +50,14 @@ include_once "./assets/layout/header.php";
 
 // ACTIONS 
 if($_POST){
-  if (empty($_POST['token']) || !hash_equals($_SESSION['token'], $_POST['token'])) {
-    die('CSRF VALIDATION FAILED');
-  }
-  unset($_SESSION['token']);
+  // var_dump($_POST);
+  // var_dump($_SESSION);
+
+  if (!empty($_POST['token']) && hash_equals($_SESSION['token'], $_POST['token'])) {
+    
+
+    $_SESSION['token'] = bin2hex(random_bytes(32));
+
 
 
       switch($_POST['action'])
@@ -97,6 +101,7 @@ if($_POST){
           $adminView->updateProductView($id, $name, $price, $description, $code, $image);
         break;
     }
+  }
 
  
  }
@@ -183,7 +188,7 @@ include_once "./assets/layout/footer.php";
         <form action="admin-panel" method="post">
 
           <input type='hidden' name='action' value='createProduct'>
-          <input type="hidden" name="token" value="<?php echo $csfr_token; ?>" />
+          <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>" />
 
           
 
@@ -259,7 +264,8 @@ $(document).on("click", ".open-delete-modal", function() {
 
       <input type='hidden' name='action' value='deleteProduct'>
       <input type='hidden' name='productID'>
-      <input type="hidden" name="token" value="<?php echo $csfr_token; ?>" />
+      <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>" />
+
 
 
       <p>Are you sure you want to delete this?</p>
@@ -313,7 +319,7 @@ $("#updateProductModal input[name='image']").val( product.Image );
 
           <input type='hidden' name='action' value='updateProduct'>
           <input type='hidden' name='productID'>
-          <input type="hidden" name="token" value="<?php echo $csfr_token; ?>" />
+          <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>" />
 
 
         <div class="form-group">
