@@ -8,6 +8,22 @@ $csfr_token = $_SESSION['token'];
 
 
 
+function logged_in(){
+  return isset($_SESSION['UserID']);
+}
+
+function confirm_logged_in(){
+  if (!logged_in()){
+      redirect_to("login.php");
+  }
+}
+
+function redirect_to($location){
+  header("Location: {$location}");
+  exit;
+}
+
+
 require_once("reCAPTCHA.php");
 require_once("routes.php");
 require_once("router.php");

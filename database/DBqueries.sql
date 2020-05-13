@@ -29,7 +29,7 @@ CREATE TABLE users (
     Phone varchar(255) NOT NULL,
     Email varchar(255) NOT NULL,
     Password varchar(255) NOT NULL,
-    RoleID int NOT NULL,
+    RoleID int DEFAULT 2,
     FOREIGN KEY(RoleID) REFERENCES roles(RoleID)
 
 );

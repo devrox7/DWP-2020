@@ -71,8 +71,8 @@ class ProductModel extends DWPDB
             return true;
 
         } catch (PDOException $exception) {
-            echo 'ERROR: ' . $exception->getMessage();
-            return false;
+            return 'ERROR: ' . $exception->getMessage();
+ 
         }
     }
 

@@ -25,4 +25,16 @@ Route::set('/DWP-2020/dwp-app/contact', function(){
     require_once 'Views/Contact.view.php';
 
 });
+
+Route::set('/DWP-2020/dwp-app/register', function(){
+
+    require_once 'Views/Register.view.php';
+
+});
+
+Route::set('/DWP-2020/dwp-app/login', function(){
+
+    require_once 'Views/Login.view.php';
+
+});
 ?>

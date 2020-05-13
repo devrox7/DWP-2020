@@ -53,7 +53,9 @@ if($_POST)
     {
         die(" <div class='alert alert-danger'>Invalid CSFR <</div>");
     }
-
+    
+    $_SESSION['token'] = bin2hex(random_bytes(32));
+    
         $email = trim(htmlspecialchars(strip_tags(($_POST['email']))));
         $fullName = trim(htmlspecialchars(strip_tags(($_POST['fullName']))));
         $subject = trim(htmlspecialchars(strip_tags($_POST['subject'])));

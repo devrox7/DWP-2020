@@ -65,8 +65,8 @@
 
                         <div class="col d-flex justify-content-end">
                             <!-- <div class="login-text">SIGN UP/LOG IN &nbsp;</div> -->
-                            <button type="button" class="btn btn-outline-light btn-sm  m-1"> Sing Up </button>
-                            <button type="button" class="btn btn-outline-light btn-sm m-1 mr-3"> Log In </button>
+                            <a href="register"  class="btn btn-outline-light btn-sm  m-1"> Sing Up </a>
+                            <a href="login" class="btn btn-outline-light btn-sm m-1 mr-3"> Log In </a>
                             <div class="user-icon "> <i class="fas fa-user"></i></div>
                         </div>
 
