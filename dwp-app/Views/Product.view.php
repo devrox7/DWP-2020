@@ -13,7 +13,7 @@ class ProductView extends ProductController
         foreach ($products as $product) {
             echo "
 
-                <div class='col-sm-4 col-md-4 col-lg-4 col-xl-2'>
+                <div class='col-12 col-xs-12 col-sm-10 col-md-6 col-lg-4 col-xl-3'>
                     <div class='card '>
 
                         <img  src='./assets/images/{$product['Image']}' class='card-img-top p-1 duck-img' alt='...''>
@@ -67,9 +67,9 @@ $productView = new ProductView();
 $page_title = "Products";
 include_once "./assets/layout/header.php";
 
-echo "<div class='row m-4 d-flex justify-content-center'>";
+echo "<div class='container-fluid'><div class='row m-4 d-flex justify-content-center'>";
 $productView->showProducts();
-echo "</div>";
+echo "</div></div>";
 // footer
 include_once "./assets/layout/footer.php";
 ?>

@@ -18,6 +18,7 @@ function confirm_logged_in(){
   }
 }
 
+
 function redirect_to($location){
   header("Location: {$location}");
   exit;

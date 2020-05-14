@@ -12,7 +12,7 @@ class ProductView extends HomeController
         foreach ($offers as $offer) {
             echo "
 
-                <div class='col-sm-4 col-md-4 col-lg-4 col-xl-2'>
+                <div class='col-12 col-xs-12 col-sm-10 col-md-6 col-lg-4 col-xl-3'>
                     <div class='card '>
 
                         <img  src='./assets/images/{$offer['Image']}' class='card-img-top p-1 duck-img' alt='...''>
@@ -25,19 +25,7 @@ class ProductView extends HomeController
 
                             <p id='card-text' class='card-text overflow-auto mb-2'>" . $offer['Description'] . "</p>
 
-                            <p class='prod-code mb-5 text-muted'>Product Code  #" . $offer['Code'] . "</p>
-
-                            <p class='prod-code mb-2 text-muted'>Select Quantity</p>
-
-                            <form>
-                                <div class='form-row'>
-                                    <div class='col-5 col-sm-6 col-md-6 col-lg-6 col-xl-6 mb-4'>
-                                        <input style='text-align: center;' type='number' class='form-control' placeholder='Quantity' value='0'>
-                                    </div>
-                                </div>
-                            </form>
-
-                            <button type='button' class='btn btn-primary mb-2 '>Add to basket <i class='fas fa-shopping-cart'></i></button>
+                            
 
 
                         </div>
@@ -53,7 +41,7 @@ class ProductView extends HomeController
 
         foreach ($latestProducts as $product) {
                 echo "
-                <div class='col-sm-4 col-md-4 col-lg-4 col-xl-2'>
+                <div class='col-12 col-xs-12 col-sm-10 col-md-6 col-lg-4 col-xl-3'>
                     <div class='card '>
 
                         <img  src='./assets/images/{$product['Image']}' class='card-img-top p-1 duck-img' alt='...''>
@@ -65,20 +53,6 @@ class ProductView extends HomeController
                             <p class='prod-price mb-2'>" . $product['Price'] . " kr </p>
 
                             <p id='card-text' class='card-text overflow-auto mb-2'>" . $product['Description'] . "</p>
-
-                            <p class='prod-code mb-5 text-muted'>Product Code  #" . $product['Code'] . "</p>
-
-                            <p class='prod-code mb-2 text-muted'>Select Quantity</p>
-
-                            <form>
-                                <div class='form-row'>
-                                    <div class='col-5 col-sm-6 col-md-6 col-lg-6 col-xl-6 mb-4'>
-                                        <input style='text-align: center;' type='number' class='form-control' placeholder='Quantity' value='0'>
-                                    </div>
-                                </div>
-                            </form>
-
-                            <button type='button' class='btn btn-primary mb-2 '>Add to basket <i class='fas fa-shopping-cart'></i></button>
 
 
                         </div>
@@ -98,9 +72,10 @@ include_once "./assets/layout/header.php";
 
 // SPECIAL OFFERS
 echo "
+<div class='container-fluid'>
 <div class='row mt-5 m-4 d-flex justify-content-center'>
 
-    <div class='row' style='display:inline-block'>  
+    <div class='row pt-3' style='display:inline-block;text-align: center;'>  
         <h1>WELCOME TO THE RUBBER DUCK SHOP</h1>
         </br>
         <h3 style='text-align:center'>See our Special Offers</h3>
@@ -133,7 +108,7 @@ echo "<div class='row mt-5 m-4 d-flex justify-content-center'>
 
 
 echo "</div>
-
+</div>
 </div>";
 
 

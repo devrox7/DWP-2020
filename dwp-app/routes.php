@@ -15,8 +15,12 @@ Route::set('/DWP-2020/dwp-app/products', function(){
 });
 
 Route::set('/DWP-2020/dwp-app/admin-panel', function(){
-
+    if($_SESSION['RoleID'] == 1){
     require_once 'Views/Admin.view.php';
+    }else{
+    require_once 'Views/Login.view.php';
+
+    }
 
 });
 

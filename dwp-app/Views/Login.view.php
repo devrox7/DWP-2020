@@ -41,6 +41,7 @@ if($_POST)
             // echo "<div class='alert alert-success'>Succes!</div>";
             $loginView->loginUser($email, $password);
             redirect_to("home");
+
         }
         else
         {
@@ -53,7 +54,7 @@ if($_POST)
 
 echo"
 <div class='d-flex justify-content-center'>
-    <div class='content-container col-12 col-xs-12 col-sm-9 col-md-6 col-lg-5 col-xl-5 m-4'>
+    <div class='content-container col-12 col-xs-12 col-sm-9 col-md-6 col-lg-5 col-xl-4 m-4'>
         <form method='post' action=''>
 
             <input type='hidden' name='token' value=".$_SESSION['token']." />
@@ -65,7 +66,7 @@ echo"
 
 
             <div class='d-flex justify-content-center'>
-                <button type='submit' class='btn btn-primary  mt-3 mb-3' name='submit'>Register</button>
+                <button type='submit' class='btn btn-primary  mt-3 mb-3' name='submit'>Login</button>
             </div>
         </form>
     </div>

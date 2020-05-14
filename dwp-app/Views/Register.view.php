@@ -84,7 +84,7 @@ echo"
             
 
             <div class='d-flex justify-content-center'>
-                <button type='submit' class='btn btn-primary  mt-3 mb-3' name='submit'>Login</button>
+                <button type='submit' class='btn btn-primary  mt-3 mb-3' name='submit'>Register</button>
             </div>
         </form>
     </div>

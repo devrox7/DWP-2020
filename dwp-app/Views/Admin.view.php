@@ -14,7 +14,7 @@ class AdminView extends ProductController
             echo "<td>" . $product['Name'] . "</td>  ";
             echo "<td>" . $product['Price'] . " kr </td> ";
             echo "<td>" . $product['Code'] . "  </td> ";
-            echo "<td>" . $product['Description'] . "</td> ";
+            echo "<td class='td-description'>" . $product['Description'] . "</td> ";
             echo "<td> <img style='width:40px; height: 40px' src='./assets/images/{$product['Image']}'> </td> ";
             echo "<td><button type='button' class='btn btn-primary open-update-modal' data-toggle='modal' data-target='#updateProductModal' data-product='".base64_encode(json_encode($product))."'><i class='fas fa-pen' ></i></button</td> ";
             echo "<td><button type='button' class='btn btn-primary open-delete-modal' data-toggle='modal' data-target='#deleteProductModal' data-product-id='".$product['ProductID']."'><i class='fas fa-trash'></i></button</td> ";
@@ -23,9 +23,7 @@ class AdminView extends ProductController
     }
 
     public function createProductView($name, $price, $description, $code, $image){
-      
       $this->createProduct($name, $price, $description, $code, $image);
-      
     }
 
     public function updateProductView($id, $name, $price, $description, $code, $image){
@@ -33,9 +31,6 @@ class AdminView extends ProductController
     }
 
     public function deleteProductView($id){
-
-
-      
       $this->deleteProduct($id);
     }
 }
@@ -54,7 +49,7 @@ if($_POST){
   // var_dump($_SESSION);
 
   if (!empty($_POST['token']) && hash_equals($_SESSION['token'], $_POST['token'])) {
-    
+    confirmAdmin();
 
     $_SESSION['token'] = bin2hex(random_bytes(32));
 

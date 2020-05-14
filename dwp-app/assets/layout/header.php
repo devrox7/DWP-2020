@@ -39,7 +39,7 @@
 
 
                     <div class="collapse navbar-collapse row " id="navbarNav">
-                        <ul class="navbar-nav col ml-2">
+                        <ul class="navbar-nav col-6 ml-4">
 
                             <li class="nav-item ">
                                 <a class="nav-link " href="home"> <i class="fas fa-home"></i> Home </a>
@@ -71,7 +71,7 @@
                     
 
 
-                        <div class="col d-flex justify-content-end">
+                        <div class="col d-flex justify-content-md-end justify-content-sm-start">
 
                         <?php if( isset($_SESSION['UserID']) && !empty($_SESSION['UserID']) )
                         {
@@ -81,8 +81,8 @@
                             <a href="logout"  class="btn btn-outline-light btn-sm  m-1 mr-2"> Logout </a>
 
                         <?php }else{ ?>
-                            <a href="register"  class="btn btn-outline-light btn-sm  m-1"> Sing Up </a>
-                            <a href="login" class="btn btn-outline-light btn-sm m-1 mr-3"> Log In </a>
+                            <a href="register"  class="btn btn-outline-light btn-sm  m-1"> Register </a>
+                            <a href="login" class="btn btn-outline-light btn-sm m-1 mr-3"> Login </a>
                         <?php } ?>
                             <!-- <div class="login-text">SIGN UP/LOG IN &nbsp;</div> -->
                             
@@ -98,16 +98,16 @@
         <?php
         // show page header
         echo "
-                <div class=' page-header ml-4 pt-5'>
+                <div class=' page-header ml-4 pt-4 bp-3'>
                     <div class='row d-flex justify-content-around'>
-
+                    <div   data-toggle='tooltip' data-placement='left' title='Shopping Basket' class='col d-flex justify-content-end'>
+                    <div class='basket-icon' >
+                        <i class='fas fa-shopping-cart'></i>
+                    </div>
+                </div>
                         <div class='col-12 text-center'><h1>{$page_title}</h1></div>
 
-                        <div   data-toggle='tooltip' data-placement='left' title='Shopping Basket' class='col d-flex justify-content-end'>
-                            <div class='basket-icon' >
-                                <i class='fas fa-shopping-cart'></i>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>";
 

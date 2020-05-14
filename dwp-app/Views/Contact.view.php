@@ -6,6 +6,7 @@ class ContactView {
     {
         $mymail = "ion.roxana27@gmail.com";
 
+
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
             {
                 echo "<div class='alert alert-warning'>Wrong email format!</div>";
@@ -49,12 +50,9 @@ include_once "./assets/layout/header.php";
 
 if($_POST)
 {
-    if (empty($_POST['token']) || !hash_equals($_SESSION['token'], $_POST['token'])) 
+    if (!empty($_POST['token']) && hash_equals($_SESSION['token'], $_POST['token'])) 
     {
-        die(" <div class='alert alert-danger'>Invalid CSFR <</div>");
-    }
-    
-    $_SESSION['token'] = bin2hex(random_bytes(32));
+        $_SESSION['token'] = bin2hex(random_bytes(32));
     
         $email = trim(htmlspecialchars(strip_tags(($_POST['email']))));
         $fullName = trim(htmlspecialchars(strip_tags(($_POST['fullName']))));
@@ -65,12 +63,18 @@ if($_POST)
 
         if($return->success == true && $return->score > 0.5){
             // echo "<div class='alert alert-success'>Succes!</div>";
-            $contactView->sendEmail($email,$subject,$message, $fullName);
+            $contactView->sendEmail($email,$subject,$message,$fullName);
         }
         else
         {
             die("<div class='alert alert-danger'>You are a bot! </div>");
         }
+
+    }
+    else
+    {
+        die(" <div class='alert alert-danger'>Invalid CSFR token</div>");
+    }
 
 }
 
@@ -78,7 +82,7 @@ if($_POST)
 
 echo"
 <div class='d-flex justify-content-center'>
-    <div class='content-container col-12 col-xs-12 col-sm-9 col-md-6 col-lg-5 col-xl-5 m-4'>
+    <div class='content-container col-12 col-xs-12 col-sm-9 col-md-6 col-lg-5 col-xl-4 m-4'>
         <form method='post' action=''>
 
             <input type='hidden' name='token' value=".$_SESSION['token']." />

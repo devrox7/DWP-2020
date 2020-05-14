@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Giga&family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 body {
     background-color: rgba(165, 165, 165, 0.08);
 }
@@ -10,6 +11,7 @@ body {
     border-radius: 10px;
     box-shadow: rgba(7, 93, 82, 0.04) 0px 0px 4px 0px, rgba(10, 74, 51, 0.08) 0px 8px 16px 0px;
     border-bottom: 3px solid rgba(21, 80, 187, 0.39) !important;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 .table th:first-of-type {
@@ -21,6 +23,8 @@ body {
     padding: .30rem;
     vertical-align: middle;
     border-top: 1px solid #dee2e6;
+    font-family: 'Poppins', sans-serif !important;
+    min-width: 120px;
 }
 
 th {
@@ -81,6 +85,7 @@ h6 {
     margin: 30px 0px;
     border: none;
     min-width: 300px;
+    border-bottom: 3px solid rgba(21, 80, 187, 0.39) !important;
 }
 
 .card:hover {
@@ -97,6 +102,7 @@ h6 {
     font-size: 15px;
     color: grey;
     letter-spacing: 0.2px;
+    max-height: 170px;
 }
 
 .duck-img {
@@ -164,15 +170,15 @@ h6 {
 
 .user-icon {
     color: #0069d9;
-    width: 40px;
+    width: 50px;
     background: #ffffff;
     text-align: center;
-    height: 40px;
+    height: 33px;
     border-radius: 20px;
     font-size: 22px;
-    padding-top: 2px;
     transition: transform .3s;
     margin-right: 7px;
+    margin-top: 4px;
 }
 
 .user-icon:hover {
@@ -202,7 +208,7 @@ h1 {
 }
 
 .form-control {
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .login-text {
@@ -243,4 +249,11 @@ a {
     margin: 8px !important;
     font-family: 'Poppins', sans-serif !important;
     letter-spacing: 1px !important;
+}
+
+.td-description {
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
