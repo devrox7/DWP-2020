@@ -12,7 +12,7 @@ class HomeModel extends DWPDB
     protected function getSpecialOffersDB()
     {
         try {
-        $query = "SELECT * FROM products WHERE SpecialOffer='1'";
+        $query = "SELECT * FROM DiscountProducts LIMIT 3";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute();
 
@@ -27,7 +27,7 @@ class HomeModel extends DWPDB
     protected function getLatestProductsDB()
     {
         try {
-        $query = "SELECT * FROM products ORDER BY ProductID DESC LIMIT 4";
+        $query = "SELECT * FROM products ORDER BY ProductID DESC LIMIT 3";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute();
 
@@ -37,6 +37,20 @@ class HomeModel extends DWPDB
         catch (PDOException $exception) {
             die('ERROR: ' . $exception->getMessage());
         }
+    }
+
+    protected function getRecommendationsDB(){
+        try {
+            $query = "SELECT * FROM RandomProducts";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->execute();
+    
+            $result = $stmt->fetchAll();
+            return $result;
+            }
+            catch (PDOException $exception) {
+                die('ERROR: ' . $exception->getMessage());
+            }
     }
 
 }

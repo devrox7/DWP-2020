@@ -47,7 +47,7 @@ class ProductModel extends DWPDB
         try {
 
             // insert query
-            $query = "INSERT INTO products (Name, Price, Description, Code, Image) VALUES (:name,:price,:description,:code,:image)";
+            $query = "INSERT INTO products (Name, Price, Discount, Description, Code, Image) VALUES (:name,:price, :discount,:description,:code,:image)";
 
             // prepare query for execution
             $stmt = $this->connect()->prepare($query);
@@ -55,6 +55,7 @@ class ProductModel extends DWPDB
             // posted values
             $name = htmlspecialchars(strip_tags($name));
             $price = htmlspecialchars(strip_tags($price));
+            $discount = htmlspecialchars(strip_tags($discount));
             $description = htmlspecialchars(strip_tags($description));
             $code = htmlspecialchars(strip_tags($code));
             $image = htmlspecialchars(strip_tags($image));
@@ -62,6 +63,7 @@ class ProductModel extends DWPDB
             // bind the parameters
             $stmt->bindParam(':name', $name);
             $stmt->bindParam(':price', $price);
+            $stmt->bindParam(':discount', $discount);
             $stmt->bindParam(':description', $description);
             $stmt->bindParam(':code', $code);
             $stmt->bindParam(':image', $image);
@@ -76,12 +78,12 @@ class ProductModel extends DWPDB
         }
     }
 
-    protected function updateProductDB($id, $name, $price, $description, $code, $image)
+    protected function updateProductDB($name, $price, $discount, $description, $code, $image)
     {
             try {
               
                 $query = "UPDATE products
-                        SET Name=:name, Description=:description, Price=:price, Code=:code, Image=:image
+                        SET Name=:name, Description=:description, Discount:discount, Price=:price, Code=:code, Image=:image
                         WHERE ProductID = :id";
 
                 // prepare query for excecution
@@ -92,6 +94,7 @@ class ProductModel extends DWPDB
                 $name = htmlspecialchars(strip_tags($name));
                 $description = htmlspecialchars(strip_tags($description));
                 $price = htmlspecialchars(strip_tags($price));
+                $discount = htmlspecialchars(strip_tags($discount));
                 $code = htmlspecialchars(strip_tags($code));
                 $image = htmlspecialchars(strip_tags($image));
 
@@ -99,6 +102,7 @@ class ProductModel extends DWPDB
                 $stmt->bindParam(':name', $name);
                 $stmt->bindParam(':description', $description);
                 $stmt->bindParam(':price', $price);
+                $stmt->bindParam(':discount', $discount);
                 $stmt->bindParam(':code', $code);
                 $stmt->bindParam(':image', $image);
                 $stmt->bindParam(':id', $id);

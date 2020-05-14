@@ -10,7 +10,8 @@ CREATE TABLE products (
     Price double(10,2) NOT NULL,
     Description varchar(255) NULL,
     Image text NOT NULL,
-    Code varchar(255) NOT NULL
+    Code varchar(255) NOT NULL,
+    Discount int(100)
 );
 
 
@@ -115,6 +116,21 @@ ALTER TABLE Products ADD(
 -- INSERT DATA
 INSERT INTO roles (RoleName)
 VALUES ('admin'), ('customer')
+
+--VIEWS
+CREATE VIEW RandomProducts AS
+SELECT Name, Price, Description, Image
+FROM products
+ORDER BY RAND ( )  
+LIMIT 3
+
+
+CREATE VIEW DicountProducts AS
+SELECT *
+FROM products
+WHERE Discount IS NOT NULL
+
+
 
 
 

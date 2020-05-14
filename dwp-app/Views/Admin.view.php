@@ -3,6 +3,10 @@ include_once './Controllers/Product.controller.php';
 
 class AdminView extends ProductController
 {
+    public function calculateDiscount($discount, $price){
+        return $price - ($price*($discount/100));
+    }
+
     public function showProducts()
     {
         $products = $this->getProducts();
@@ -13,8 +17,11 @@ class AdminView extends ProductController
             echo "<td>" . $product['ProductID'] . "</td> ";
             echo "<td>" . $product['Name'] . "</td>  ";
             echo "<td>" . $product['Price'] . " kr </td> ";
-            echo "<td>" . $product['Code'] . "  </td> ";
-            echo "<td class='td-description'>" . $product['Description'] . "</td> ";
+
+            echo "<td>"; if($product['Discount'] !== NULL){ echo"" . $product['Discount'] . " % "; } else{ echo "<i class='text-muted'>None</i>  ";}  echo" </td> ";
+            echo "<td>"; if($product['Discount'] !== NULL){ echo"" . $this->calculateDiscount($product['Discount'], $product['Price']) . " kr "; }else{ echo "<i class='text-muted'>None</i>  ";}  echo"</td> ";
+
+            echo "<td> #" . $product['Code'] . "  </td> ";
             echo "<td> <img style='width:40px; height: 40px' src='./assets/images/{$product['Image']}'> </td> ";
             echo "<td><button type='button' class='btn btn-primary open-update-modal' data-toggle='modal' data-target='#updateProductModal' data-product='".base64_encode(json_encode($product))."'><i class='fas fa-pen' ></i></button</td> ";
             echo "<td><button type='button' class='btn btn-primary open-delete-modal' data-toggle='modal' data-target='#deleteProductModal' data-product-id='".$product['ProductID']."'><i class='fas fa-trash'></i></button</td> ";
@@ -22,12 +29,12 @@ class AdminView extends ProductController
         }
     }
 
-    public function createProductView($name, $price, $description, $code, $image){
-      $this->createProduct($name, $price, $description, $code, $image);
+    public function createProductView($name, $price, $discount, $description, $code, $image){
+      $this->createProduct($name, $price, $discount, $description, $code, $image);
     }
 
-    public function updateProductView($id, $name, $price, $description, $code, $image){
-      $this->updateProduct($id, $name, $price, $description, $code, $image);
+    public function updateProductView($name, $price, $discount, $description, $code, $image){
+      $this->updateProduct($name, $price, $discount, $description, $code, $image);
     }
 
     public function deleteProductView($id){
@@ -49,7 +56,7 @@ if($_POST){
   // var_dump($_SESSION);
 
   if (!empty($_POST['token']) && hash_equals($_SESSION['token'], $_POST['token'])) {
-    confirmAdmin();
+    
 
     $_SESSION['token'] = bin2hex(random_bytes(32));
 
@@ -63,12 +70,13 @@ if($_POST){
             // set product property values from form
             $name = $_POST['name'];
             $price = $_POST['price'];
+            $discount = $_POST['discount'];
             $description = $_POST['description'];
             $code = $_POST['code'];
             $image = $_POST['image'];
           
             // create the product
-            $adminView->createProductView($name, $price, $description, $code, $image);
+            $adminView->createProductView($name, $price, $discount, $description, $code, $image);
         break;
 
 
@@ -86,6 +94,8 @@ if($_POST){
           $id = $_POST['productID'];
           $name = $_POST['name'];
           $price = $_POST['price'];
+          $discount = $_POST['discount'];
+
           $description = $_POST['description'];
           $code = $_POST['code'];
           $image = $_POST['image'];
@@ -93,7 +103,7 @@ if($_POST){
           // var_dump($_POST);
           // die();
 
-          $adminView->updateProductView($id, $name, $price, $description, $code, $image);
+          $adminView->updateProductView($name, $price, $discount, $description, $code, $image);
         break;
     }
   }
@@ -102,7 +112,7 @@ if($_POST){
  }
 // MANAGE PRODUCTS TABLE
 echo "
-<div class='content-container m-5'>
+<div class='content-container m-2 mt-3 mb-4'>
 
       <div class='row mb-4'>
 
@@ -116,14 +126,15 @@ echo "
 
       </div>
 
-      <table class='table table-responsive'>
+      <table class='table table-responsive-sm  table-borderless'>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Price</th>
+                <th>Original Price</th>
+                <th>Discount</th>
+                <th>Price after Discount</th>
                 <th>Code</th>
-                <th>Description</th>
                 <th>Image</th>
                 <th></th>
                 <th></th>
@@ -138,7 +149,7 @@ echo "</table>
 
 // MANAGE ORDERS TABLE
 echo "
-<div class='content-container  m-5'>
+<div class='content-container  m-2 mb-4'>
       <div class='row mb-4'>
         <div class='col'>
           <h4><b>Manage Orders</b></h4>
@@ -150,7 +161,7 @@ echo "
 
 // MANAGE COMPANY DETAILS TABLE
 echo "
-<div class='content-container  m-5'>
+<div class='content-container m-2 mb-4'>
       <div class='row mb-4'>
         <div class='col'>
           <h4><b>Manage Company Details</b></h4>
@@ -196,6 +207,17 @@ include_once "./assets/layout/footer.php";
           <label for="price">Product Price</label>
           <input type="number" class="form-control" id="price" name='price' placeholder="Price">
         </div>
+
+        <div class="form-group">
+          <label  for="discount">Discount</label>
+          <div class="input-group ">
+            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Discount">
+            <div class="input-group-prepend">
+              <div class="input-group-text">%</div>
+            </div>
+          </div>
+        </div>
+
         <div class="form-group">
         <label for="description">Product Description</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" name='description' rows="3"></textarea>
@@ -326,6 +348,17 @@ $("#updateProductModal input[name='image']").val( product.Image );
           <label for="price">Product Price</label>
           <input type="text" class="form-control" id="price" name='price' placeholder="Price">
         </div>
+
+        <div class="form-group">
+          <label for="discount">Discount</label>
+          <div class="input-group ">
+            <input type="text" class="form-control" id="discount" placeholder="Discount">
+            <div class="input-group-prepend">
+              <div class="input-group-text">%</div>
+            </div>
+          </div>
+        </div>
+
         <div class="form-group">
         <label for="description">Product Description</label>
         <textarea class="form-control" id="description" name='description' rows="3"></textarea>

@@ -1,8 +1,11 @@
 <?php
 include_once './Controllers/Home.controller.php';
 
-class ProductView extends HomeController
+class HomeView extends HomeController
 {
+    public function calculateDiscount($discount, $price){
+        return $price - ($price*($discount/100));
+    }
 
     public function showOfferProducts()
     {
@@ -15,13 +18,23 @@ class ProductView extends HomeController
                 <div class='col-12 col-xs-12 col-sm-10 col-md-6 col-lg-4 col-xl-3'>
                     <div class='card '>
 
+                        "; if($offer['Discount'] !== NULL){ echo "
+                            <span class='badge badge-pill badge-primary'>Offer <i class='fas fa-star'></i></span>
+                        "; } echo"
+
                         <img  src='./assets/images/{$offer['Image']}' class='card-img-top p-1 duck-img' alt='...''>
 
                         <div class='card-body'>
 
                             <h5 class='card-title'>" . $offer['Name'] . "</h5>
 
-                            <p class='prod-price mb-2'>" . $offer['Price'] . " kr </p>
+                            "; if($offer['Discount'] !== NULL){ echo "
+                                
+
+                                <p class='prod-price-disc mb-2' style='color:rgb(252, 186, 0) !importan'>" . $this->calculateDiscount($offer['Discount'], $offer['Price']) . " kr</p>
+
+                                <p class='discounted mb-2'>" . $offer['Price'] . " kr </p>
+                            "; } echo"
 
                             <p id='card-text' class='card-text overflow-auto mb-2'>" . $offer['Description'] . "</p>
 
@@ -61,9 +74,35 @@ class ProductView extends HomeController
         }
     }
 
+    public function showRecommendations(){
+        $latestRec = $this->getRecommendations();
+        // var_dump($offers);
+
+        foreach ($latestRec as $rec) {
+                echo "
+                <div class='col-12 col-xs-12 col-sm-10 col-md-6 col-lg-4 col-xl-3'>
+                    <div class='card '>
+
+                        <img  src='./assets/images/{$rec['Image']}' class='card-img-top p-1 duck-img' alt='...''>
+
+                        <div class='card-body'>
+
+                            <h5 class='card-title'>" .  $rec['Name']. "</h5>
+
+                            <p class='prod-price mb-2'>" . $rec['Price'] . " kr </p>
+
+                            <p id='card-text' class='card-text overflow-auto mb-2'>" . $rec['Description'] . "</p>
+
+
+                        </div>
+                    </div>
+                </div>";
+        }
+    }
+
 }
 
-$productView = new ProductView();
+$homeView = new HomeView();
 
 
 // set page headers
@@ -78,18 +117,22 @@ echo "
     <div class='row pt-3' style='display:inline-block;text-align: center;'>  
         <h1>WELCOME TO THE RUBBER DUCK SHOP</h1>
         </br>
-        <h3 style='text-align:center'>See our Special Offers</h3>
+        <h3 style='text-align:center'>Special Offers</h3>
     </div>
 
     <div class='row m-4 d-flex justify-content-center'>";
 
-        $productView->showOfferProducts();
+        $homeView->showOfferProducts();
 
 
 
 
 echo "</div>
 
+</div>";
+
+echo "</div>
+</div>
 </div>";
 
 echo "<div class='row mt-5 m-4 d-flex justify-content-center'>
@@ -97,19 +140,35 @@ echo "<div class='row mt-5 m-4 d-flex justify-content-center'>
 <div class='row' style='display:inline-block'>  
         
         </br>
-        <h3 style='text-align:center'>See our Latest Products</h3>
+        <h3 style='text-align:center'>Recommendations</h3>
         </div>
 
 
     <div class='row m-4 d-flex justify-content-center'>";
 
-       $productView->showLatestProducts();
+       $homeView->showRecommendations();
 
 
 
 echo "</div>
 </div>
 </div>";
+
+echo "<div class='row mt-5 m-4 d-flex justify-content-center'>
+
+<div class='row' style='display:inline-block'>  
+        
+        </br>
+            <h3 style='text-align:center'>Newest Products</h3>
+        </div>
+
+
+    <div class='row m-4 d-flex justify-content-center'>";
+
+       $homeView->showLatestProducts();
+
+
+
 
 
 // footer

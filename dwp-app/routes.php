@@ -18,7 +18,7 @@ Route::set('/DWP-2020/dwp-app/admin-panel', function(){
     if($_SESSION['RoleID'] == 1){
     require_once 'Views/Admin.view.php';
     }else{
-    require_once 'Views/Login.view.php';
+    
 
     }
 
@@ -31,14 +31,21 @@ Route::set('/DWP-2020/dwp-app/contact', function(){
 });
 
 Route::set('/DWP-2020/dwp-app/register', function(){
-
+    if(!$_SESSION['UserID'] ){
     require_once 'Views/Register.view.php';
+    }
+    else{
+    require_once 'Views/Homee.view.php';
+    }
 
 });
 
 Route::set('/DWP-2020/dwp-app/login', function(){
-
+    if(!$_SESSION['UserID'] ){
     require_once 'Views/Login.view.php';
+    }else{
+    require_once 'Views/Homee.view.php';
+    }
 
 });
 

@@ -5,14 +5,19 @@ include_once './Models/Home.model.php';
 
 class HomeController extends HomeModel{
 
-    public function getSpecialOffers(){
+    protected function getSpecialOffers(){
         return $this->getSpecialOffersDB();
         
     }
 
-    public function getLatestProducts(){
+    protected function getLatestProducts(){
         return $this->getLatestProductsDB();
         
+    }
+
+    protected function getRecommendations(){
+        return $this->getRecommendationsDB();
+
     }
 
 

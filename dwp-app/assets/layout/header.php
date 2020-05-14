@@ -11,7 +11,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"  rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link href="./assets/styles.css"  rel="stylesheet">
+    <link href="./assets/styles.css?v=<?php echo filemtime(getcwd() . "/assets/STYLES.css"); ?>"  rel="stylesheet">
 
     <script src="https://www.google.com/recaptcha/api.js?render=<?php echo SITE_KEY ?>"></script>
         
@@ -22,7 +22,7 @@
     <!-- container -->
     <div class="container-fluid">
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex">
+        <nav class="navbar navbar-expand-lg navbar-dark  d-flex">
 
                 <img class="duck-logo" src="./assets/images/logo.png">
                 <a class="navbar-brand" href="home">DUCK SHOP</a>
@@ -42,7 +42,7 @@
                         <ul class="navbar-nav col-6 ml-4">
 
                             <li class="nav-item ">
-                                <a class="nav-link " href="home"> <i class="fas fa-home"></i> Home </a>
+                                <a class="nav-link " href="home"> <i class="fas fa-home"></i>&nbsp; Home </a>
                             </li>
 
                             <li class="nav-item ">
