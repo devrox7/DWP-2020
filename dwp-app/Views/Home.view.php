@@ -1,8 +1,21 @@
 <?php
 include_once './Controllers/Home.controller.php';
+// include_once './Controllers/About.controller.php';
+
+// $aboutCtrl = new AboutController();
 
 class HomeView extends HomeController
 {
+    public $info;
+
+    function __construct(){
+        // $this->getCompanyInfo();
+    }
+
+    // public function getCompantyInfo(){
+    //     $this->info =  $aboutCtrl->getInfo() [0];
+    // }
+
     public function calculateDiscount($discount, $price){
         return $price - ($price*($discount/100));
     }
@@ -116,6 +129,7 @@ echo "
 
     <div class='row pt-3' style='display:inline-block;text-align: center;'>  
         <h1>WELCOME TO THE RUBBER DUCK SHOP</h1>
+       
         </br>
         <h3 style='text-align:center'>Special Offers</h3>
     </div>

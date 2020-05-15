@@ -82,8 +82,9 @@ if($_POST)
 
 echo"
 <div class='d-flex justify-content-center'>
-    <div class='content-container col-12 col-xs-12 col-sm-9 col-md-6 col-lg-5 col-xl-4 m-4'>
-        <form method='post' action=''>
+    <div class='content-container col-12 col-xs-12 col-sm-9 col-md-6 col-lg-5 col-xl-5 m-4'>
+    <div class=' d-flex justify-content-center'>
+        <form class='col-12 col-xs-12 col-sm-11 col-md-8 col-lg-7 col-xl-6' method='post' action=''>
 
             <input type='hidden' name='token' value=".$_SESSION['token']." />
 
@@ -99,6 +100,7 @@ echo"
 
             <button type='submit' class='btn btn-primary' name='submit'>Send Message</button>
         </form>
+        </div>
     </div>
 </div>
 ";

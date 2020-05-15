@@ -52,14 +52,6 @@ CREATE TABLE orderEntries (
 );
 
 
-CREATE TABLE offers (
-    OfferID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    ProductID int NOT NULL,
-    Discount int NOT NULL,
-    FOREIGN KEY(ProductID) REFERENCES products(ProductID)
-
-);
-
 
 CREATE TABLE invoice (
     InvoiceID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -73,7 +65,7 @@ CREATE TABLE invoice (
 CREATE TABLE company (
     CompanyID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Name varchar(255) NOT NULL,
-    Description varchar(255) NOT NULL,
+    Description text NOT NULL,
     OpeningHours varchar(255) NOT NULL,
     ContactInfo varchar(255) NOT NULL,
     Address varchar(255) NOT NULL
@@ -115,7 +107,10 @@ ALTER TABLE Products ADD(
 
 -- INSERT DATA
 INSERT INTO roles (RoleName)
-VALUES ('admin'), ('customer')
+VALUES ('admin'), ('customer') 
+
+INSERT INTO company (Name, Description, OpeningHours, ContactInfo, Address)
+VALUES ('Rubber Duck Shop','Welcome to our online duck store and meet the cutest rubber ducks of Denmark. They’re all premium ducks made of high quality materials and CE approved. Discover the hand painted details and special finishing. Absolute collectors items. Take your pick. Order online worldwide or visit our duck stores in Denmark', 'Working weekdays 08-17', 'service@duckshop.dk +4500112233', 'Denmark')
 
 --VIEWS
 CREATE VIEW RandomProducts AS

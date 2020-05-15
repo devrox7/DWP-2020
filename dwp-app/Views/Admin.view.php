@@ -1,6 +1,7 @@
 <?php
 include_once './Controllers/Product.controller.php';
 
+
 class AdminView extends ProductController
 {
     public function calculateDiscount($discount, $price){

@@ -30,8 +30,9 @@ class ProductView extends ProductController
                         
 
                         <div class='card-body'>
+                        <div class='d-flex justify-content-center'>
                             <img  src='./assets/images/{$product['Image']}' class='card-img-top p-1 duck-img' alt='...''>
-
+                            </div>
                             <h5 class='card-title'>" . $product['Name'] . "</h5>
 
                             

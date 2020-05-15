@@ -53,6 +53,11 @@
                                 <a href="contact" class="nav-link" href="#"> <i class="fas fa-address-card"></i> &nbsp;Contact</a>
                             </li>
 
+                            <li class="nav-item ">
+                                <a href="about" class="nav-link" href="#"> <i class="fas fa-address-card"></i> &nbsp;About</a>
+                            </li>
+
+
                             <?php if($_SESSION['RoleID'] == 1 )
                             { ?>
 

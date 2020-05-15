@@ -59,34 +59,36 @@ if($_POST)
 echo"
 <div class='d-flex justify-content-center'>
     <div class='content-container col-12 col-xs-12 col-sm-9 col-md-6 col-lg-5 col-xl-5 m-4'>
-        <form method='post' action=''>
+        <div class=' d-flex justify-content-center'>
+            <form class='col-12 col-xs-12 col-sm-9 col-md-6 col-lg-5 col-xl-5' method='post' action=''>
 
-            <input type='hidden' name='token' value=".$_SESSION['token']." />
-            <input type='hidden' id='g-recaptcha-response' name='g-recaptcha-response' class='form-control' />
+                <input type='hidden' name='token' value=".$_SESSION['token']." />
+                <input type='hidden' id='g-recaptcha-response' name='g-recaptcha-response' class='form-control' />
 
-            Email <br /><br /><input required type='email' name='email' class='form-control' /><br />
+                Email <br /><br /><input required type='email' name='email' class='form-control' /><br />
 
-            Password <br /><br /><input required type='password' name='password' class='form-control' /><br />
+                Password <br /><br /><input required type='password' name='password' class='form-control' /><br />
 
-            <hr>
+                <hr>
 
-            <div class='d-flex justify-content-center'>Fill in your details</div>
+                <div class='d-flex justify-content-center mb-2'>Fill in your details</div>
 
-            Full Name <br /><br /><input required type='text' name='name' class='form-control' /><br />
+                Full Name <br /><br /><input required type='text' name='name' class='form-control' /><br />
 
-            Phone <br /><br /><input required type='text' name='phone' class='form-control' /><br />
+                Phone <br /><br /><input required type='text' name='phone' class='form-control' /><br />
 
-            Address <br /><br /><input required type='text' name='address' class='form-control' /><br />
+                Address <br /><br /><input required type='text' name='address' class='form-control' /><br />
 
-            City <br /><br /><input required type='text' name='city' class='form-control' /><br />
+                City <br /><br /><input required type='text' name='city' class='form-control' /><br />
 
-            ZIP <br /><br /><input required type='text' name='zip' class='form-control' /><br /><br />
-            
+                ZIP <br /><br /><input required type='text' name='zip' class='form-control' /><br /><br />
+                
 
-            <div class='d-flex justify-content-center'>
-                <button type='submit' class='btn btn-primary  mt-3 mb-3' name='submit'>Register</button>
-            </div>
-        </form>
+                <div class='d-flex justify-content-center'>
+                    <button type='submit' class='btn btn-primary  mt-3 mb-3' name='submit'>Register</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 ";
