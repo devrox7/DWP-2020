@@ -1,5 +1,6 @@
 <?php
 include_once './Controllers/Home.controller.php';
+
 // include_once './Controllers/About.controller.php';
 
 // $aboutCtrl = new AboutController();
@@ -8,13 +9,11 @@ class HomeView extends HomeController
 {
     public $info;
 
+
     function __construct(){
-        // $this->getCompanyInfo();
+ 
     }
 
-    // public function getCompantyInfo(){
-    //     $this->info =  $aboutCtrl->getInfo() [0];
-    // }
 
     public function calculateDiscount($discount, $price){
         return $price - ($price*($discount/100));
@@ -118,6 +117,7 @@ class HomeView extends HomeController
 $homeView = new HomeView();
 
 
+
 // set page headers
 $page_title = "";
 include_once "./assets/layout/header.php";
@@ -128,7 +128,14 @@ echo "
 <div class='row mt-5 m-4 d-flex justify-content-center'>
 
     <div class='row pt-3' style='display:inline-block;text-align: center;'>  
-        <h1>WELCOME TO THE RUBBER DUCK SHOP</h1>
+        <h1 style='    font-weight: bold;
+        letter-spacing: 2px;'>WELCOME TO THE RUBBER DUCK SHOP</h1>
+        "; 
+        include './Views/Description.view.php';
+        
+        echo"  
+       
+
        
         </br>
         <h3 style='text-align:center'>Special Offers</h3>
@@ -137,7 +144,6 @@ echo "
     <div class='row m-4 d-flex justify-content-center'>";
 
         $homeView->showOfferProducts();
-
 
 
 

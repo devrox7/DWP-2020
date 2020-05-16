@@ -25,7 +25,7 @@ include_once "./assets/layout/header.php";
 
 echo"
 <div class='d-flex justify-content-center'>
-    <div class='content-container col-12 col-xs-12 col-sm-9 col-md-12 col-lg-12 col-xl-10 m-4'>
+    <div class='content-container col-12 col-xs-12 col-sm-10 col-md-7 col-lg-6 col-xl-6 m-4'>
     <div class='d-flex justify-content-center'>
         
 <div class='text-center col-6'> 

@@ -24,7 +24,7 @@ class AdminView extends ProductController
 
             echo "<td> #" . $product['Code'] . "  </td> ";
             echo "<td> <img style='width:40px; height: 40px' src='./assets/images/{$product['Image']}'> </td> ";
-            echo "<td><button type='button' class='btn btn-primary open-update-modal' data-toggle='modal' data-target='#updateProductModal' data-product='".base64_encode(json_encode($product))."'><i class='fas fa-pen' ></i></button</td> ";
+            echo "<td><button type='button' class='btn btn-primary open-update-modal' data-toggle='modal' data-target='#updateProductModal' data-product='".base64_encode(json_encode($product))."'><i class='fas fa-pen' ></i></button></td> ";
             echo "<td><button type='button' class='btn btn-primary open-delete-modal' data-toggle='modal' data-target='#deleteProductModal' data-product-id='".$product['ProductID']."'><i class='fas fa-trash'></i></button</td> ";
             echo "</tr>";
         }
@@ -59,7 +59,7 @@ if($_POST){
   if (!empty($_POST['token']) && hash_equals($_SESSION['token'], $_POST['token'])) {
     
 
-    $_SESSION['token'] = bin2hex(random_bytes(32));
+   
 
 
 
@@ -67,7 +67,7 @@ if($_POST){
       {
 
         case 'createProduct':
-                
+          $_SESSION['token'] = bin2hex(random_bytes(32));
             // set product property values from form
             $name = $_POST['name'];
             $price = $_POST['price'];
@@ -83,7 +83,7 @@ if($_POST){
 
         case 'deleteProduct':
             $id = $_POST['productID'];
-
+            $_SESSION['token'] = bin2hex(random_bytes(32));
             // var_dump($_POST);
             // die();
 
@@ -92,6 +92,7 @@ if($_POST){
 
 
         case 'updateProduct':
+          $_SESSION['token'] = bin2hex(random_bytes(32));
           $id = $_POST['productID'];
           $name = $_POST['name'];
           $price = $_POST['price'];
@@ -113,7 +114,7 @@ if($_POST){
  }
 // MANAGE PRODUCTS TABLE
 echo "
-<div class='content-container m-2 mt-3 mb-4'>
+<div class='content-container m-2 mt-3 mb-5'>
 
       <div class='row mb-4'>
 
@@ -150,7 +151,7 @@ echo "</table>
 
 // MANAGE ORDERS TABLE
 echo "
-<div class='content-container  m-2 mb-4'>
+<div class='content-container  m-2 mb-5'>
       <div class='row mb-4'>
         <div class='col'>
           <h4><b>Manage Orders</b></h4>
@@ -162,13 +163,14 @@ echo "
 
 // MANAGE COMPANY DETAILS TABLE
 echo "
-<div class='content-container m-2 mb-4'>
+<div class='content-container m-2 mb-5'>
       <div class='row mb-4'>
         <div class='col'>
           <h4><b>Manage Company Details</b></h4>
         </div>
+        ";include './Views/ManageDetails.view.php'; echo " 
       </div>
-      <p>Work in progress</p>
+    
 </div>";
 
 
