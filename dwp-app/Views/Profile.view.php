@@ -42,7 +42,7 @@ echo"
 
                     <h5> Address</h5>
                         ". $profileView->info['City'] ."
-                        ". $profileView->info['ZIP'] ."
+                        ". $profileView->info['ZIP'] .",
                         ". $profileView->info['Address'] ."<br><br><br>
 
                     <button class='btn btn-primary' disabled>Change User Info</button><br><br>

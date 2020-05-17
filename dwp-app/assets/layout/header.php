@@ -104,11 +104,16 @@
         echo "
                 <div class=' page-header ml-4 pt-4 bp-3'>
                     <div class='row d-flex justify-content-around'>
-                    <div   data-toggle='tooltip' data-placement='left' title='Shopping Basket' class='col d-flex justify-content-end'>
-                    <div class='basket-icon' >
-                        <i class='fas fa-shopping-cart'></i>
-                    </div>
-                </div>
+
+                        <div   data-toggle='tooltip' data-placement='left' title='Shopping Basket' class='col d-flex justify-content-end'>
+                            <button type='button'' class='basket-icon btn btn-primary' >
+                                <i class='fas fa-shopping-cart'></i>
+                                <span class='badge badge-light'>0</span>
+
+                            </button>
+
+                        </div>
+
                         <div class='col-12 text-center'><h1>{$page_title}</h1></div>
 
                         

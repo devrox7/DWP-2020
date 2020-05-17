@@ -26,7 +26,7 @@ echo"
     <div class=' col-12 col-xs-12 col-sm-10 col-md-7 col-lg-6 col-xl-6 m-4'>
     <div class='d-flex justify-content-center'>
         
-        <div class='text-center col-10' style='font-size: 17px;
+        <div class='text-center col-xl-10' style='font-size: 17px;
         letter-spacing: 1px;'> 
 
         ". $descView->info['Description'] ."

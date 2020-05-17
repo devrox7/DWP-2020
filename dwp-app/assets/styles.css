@@ -163,16 +163,13 @@ h6 {
 }
 
 .basket-icon {
-    color: white;
-    width: 40px;
-    background: #0069d9;
-    text-align: center;
-    height: 40px;
-    border-radius: 20px;
-    font-size: 20px;
-    padding-top: 4px;
+    font-size: 17px;
     transition: transform .3s;
     margin-right: 7px;
+}
+
+.badge-light {
+    border-radius: 8px;
 }
 
 .user-icon {
