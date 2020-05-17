@@ -49,9 +49,17 @@ if($_POST && $_POST['action'] == 'updateDetails')
 
 
 echo"
+<div class='row mb-4'>
+        <div class='col'>
+          <h4><b>Manage Company Details</b></h4>
+        </div>
 
-<button type='button' class='btn btn-primary open-company-modal' data-toggle='modal' data-target='#updateDetailsModal' data-info='".base64_encode(json_encode($detailsView->info))."'>Update Company Details</button>
-
+        <div class='col'>
+          <div class='d-flex justify-content-end'>
+            <button type='button' class='btn btn-primary open-company-modal' data-toggle='modal' data-target='#updateDetailsModal' data-info='".base64_encode(json_encode($detailsView->info))."'>Update Details</button>
+          </div>
+        </div>
+</div>
 ";
 
 

@@ -1,5 +1,6 @@
 
-</div>
+  </div>
+</body>
 
 <script>
   grecaptcha.ready(function() {
