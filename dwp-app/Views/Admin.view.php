@@ -35,6 +35,8 @@ class AdminView extends ProductController
     }
 
     public function updateProductView($id, $name, $price, $discount, $description, $code, $image){
+      echo "7";
+
       $this->updateProduct($id, $name, $price, $discount, $description, $code, $image);
     }
 
@@ -124,6 +126,7 @@ if($_POST){
 
 
         case 'updateProduct':
+          echo "1";
           $_SESSION['token'] = bin2hex(random_bytes(32));
           $id = $_POST['productID'];
           $name = $_POST['name'];
@@ -132,12 +135,54 @@ if($_POST){
 
           $description = $_POST['description'];
           $code = $_POST['code'];
-          $image = $_POST['image'];
+          echo "2";
+          
 
-          // var_dump($_POST);
-          // die();
+          if($_FILES['image']['name'] != ''){
+          echo "3";
 
-          $adminView->updateProductView($id, $name, $price, $discount, $description, $code, $image);
+            $image = $_FILES['image'];
+            $imageName = $_FILES['image']['name'];
+            $imageTmpName = $_FILES['image']['tmp_name'];
+            $imageSize = $_FILES['image']['size'];
+            $imageError = $_FILES['image']['error'];
+            $imageType = $_FILES['image']['type'];
+
+            $imageExt = explode('.', $imageName);
+            $imageActualExt = strtolower(end($imageExt));
+            $imageNameNew = uniqid('', true).".".$imageActualExt;
+            $allowedImages = array('jpg','jpeg', 'png');
+            echo "4";
+
+            if(in_array($imageActualExt, $allowedImages)){
+          echo "5";
+
+              if($imageError === 0){
+
+                if($imageSize < 1000000){
+                  $imageDestination = './assets/images/'.$imageNameNew;
+                  move_uploaded_file($imageTmpName,$imageDestination);
+
+                }else{
+                echo "Your image is too big!";
+                }
+
+              }else{
+                echo "There was an error uloading your image!";
+
+              }
+            }else {
+              echo "You cannot upload images of this type! Only jpg, jpeg and png allowed.";
+            }
+          }else{
+            $imageNameNew = '';
+          }
+          
+      
+          
+          echo "6";
+
+          $adminView->updateProductView($id, $name, $price, $discount, $description, $code, $imageNameNew);
         break;
     }
   }
@@ -368,7 +413,7 @@ $("#updateProductModal input[name='image']").val( product.Image );
       </div>
 
       <div class="modal-body">
-        <form action="admin-panel" method="post">
+        <form action="admin-panel" method="post" enctype="multipart/form-data">
 
           <input type='hidden' name='action' value='updateProduct'>
           <input type='hidden' name='productID'>
@@ -405,16 +450,16 @@ $("#updateProductModal input[name='image']").val( product.Image );
         <input type="text" class="form-control" id="code" name='code' rows="3"></input>
         </div>
 
-        <!-- <div class='form-group'>
-        <label for="code">Current Image</label>
-        <input type="text" class="form-control" disabled name="image" id="image" placeholder='image'>
-        </div> -->
-
-        <div class="form-group" >
+        <!-- <div class="form-group" >
           <div class="custom-file">
             <input type="file" class="custom-file-input" id="image" name='image'>
-            <label for="image" class="custom-file-label">Select Product Image...</label>
+            <label for="image" class="custom-file-label">Select Product Image (MAX 1MB)</label>
           </div>
+        </div> -->
+
+        <div class="form-group">
+          <label for="image">Select Image</label>
+          <input type="file" class="form-control-file" id="image" name='image'>
         </div>
 
         <div class="modal-footer">

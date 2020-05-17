@@ -80,10 +80,13 @@ class ProductModel extends DWPDB
 
     protected function updateProductDB($id, $name, $price, $discount, $description, $code, $image)
     {
+        echo "9";
+
             try {
+          echo "10";
               
                 $query = "UPDATE products
-                        SET Name=:name, Description=:description, Discount:discount, Price=:price, Code=:code, Image=:image
+                        SET Name=:name, Price=:price, Discount=:discount, Description=:description, Code=:code, Image=IFNULL(NULLIF(:image, ''), Image)
                         WHERE ProductID = :id";
 
                 // prepare query for excecution
