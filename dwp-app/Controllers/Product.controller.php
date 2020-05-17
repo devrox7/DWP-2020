@@ -15,13 +15,13 @@ class ProductController extends ProductModel{
         
     }
 
-    protected function updateProduct($name, $price, $discount, $description, $code, $image){
-        $this->updateProductDB($name, $price, $discount, $description, $code, $image);
+    protected function updateProduct($id, $name, $price, $discount, $description, $code, $image){
+        $this->updateProductDB($id, $name, $price, $discount, $description, $code, $image);
         
     }
 
-    protected function createProduct($name, $price, $discount, $description, $code, $image){
-        $this->createProductDB($name, $price, $discount, $description, $code, $image);
+    protected function createProduct($name, $price, $discount, $description, $code, $imageName){
+        $this->createProductDB($name, $price, $discount, $description, $code, $imageName);
     }
 
     protected function deleteProduct($id){

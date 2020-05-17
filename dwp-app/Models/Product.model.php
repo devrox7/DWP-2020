@@ -42,12 +42,12 @@ class ProductModel extends DWPDB
 
     }
 
-    protected function createProductDB($name, $price, $description, $code, $image)
+    protected function createProductDB($name, $price, $discount, $description, $code, $imageName)
     {
         try {
 
             // insert query
-            $query = "INSERT INTO products (Name, Price, Discount, Description, Code, Image) VALUES (:name,:price, :discount,:description,:code,:image)";
+            $query = "INSERT INTO products (Name, Price, Discount, Description, Code, Image) VALUES (:name,:price, :discount,:description,:code,:imageName)";
 
             // prepare query for execution
             $stmt = $this->connect()->prepare($query);
@@ -58,7 +58,7 @@ class ProductModel extends DWPDB
             $discount = htmlspecialchars(strip_tags($discount));
             $description = htmlspecialchars(strip_tags($description));
             $code = htmlspecialchars(strip_tags($code));
-            $image = htmlspecialchars(strip_tags($image));
+            $imageName = htmlspecialchars(strip_tags($imageName));
 
             // bind the parameters
             $stmt->bindParam(':name', $name);
@@ -66,7 +66,7 @@ class ProductModel extends DWPDB
             $stmt->bindParam(':discount', $discount);
             $stmt->bindParam(':description', $description);
             $stmt->bindParam(':code', $code);
-            $stmt->bindParam(':image', $image);
+            $stmt->bindParam(':imageName', $imageName);
 
             // Execute the query
             $stmt->execute();
@@ -78,7 +78,7 @@ class ProductModel extends DWPDB
         }
     }
 
-    protected function updateProductDB($name, $price, $discount, $description, $code, $image)
+    protected function updateProductDB($id, $name, $price, $discount, $description, $code, $image)
     {
             try {
               

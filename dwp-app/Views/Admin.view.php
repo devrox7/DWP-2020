@@ -30,12 +30,12 @@ class AdminView extends ProductController
         }
     }
 
-    public function createProductView($name, $price, $discount, $description, $code, $image){
-      $this->createProduct($name, $price, $discount, $description, $code, $image);
+    public function createProductView($name, $price, $discount, $description, $code, $imageName){
+      $this->createProduct($name, $price, $discount, $description, $code, $imageName);
     }
 
-    public function updateProductView($name, $price, $discount, $description, $code, $image){
-      $this->updateProduct($name, $price, $discount, $description, $code, $image);
+    public function updateProductView($id, $name, $price, $discount, $description, $code, $image){
+      $this->updateProduct($id, $name, $price, $discount, $description, $code, $image);
     }
 
     public function deleteProductView($id){
@@ -74,10 +74,42 @@ if($_POST){
             $discount = $_POST['discount'];
             $description = $_POST['description'];
             $code = $_POST['code'];
-            $image = $_POST['image'];
+            $image = $_FILES['image'];
+
+            $imageName = $_FILES['image']['name'];
+            $imageTmpName = $_FILES['image']['tmp_name'];
+            $imageSize = $_FILES['image']['size'];
+            $imageError = $_FILES['image']['error'];
+            $imageType = $_FILES['image']['type'];
           
+            $imageExt = explode('.', $imageName);
+            $imageActualExt = strtolower(end($imageExt));
+            $imageNameNew = uniqid('', true).".".$imageActualExt;
+
+
+            $allowedImages = array('jpg','jpeg', 'png');
+
+            if(in_array($imageActualExt, $allowedImages)){
+              if($imageError === 0){
+
+                if($imageSize < 1000000){
+                  $imageDestination = './assets/images/'.$imageNameNew;
+                  move_uploaded_file($imageTmpName,$imageDestination);
+
+                }else{
+                echo "Your image is too big!";
+                }
+
+              }else{
+                echo "There was an error uloading your image!";
+
+              }
+            }else {
+              echo "You cannot upload images of this type! Only jpg, jpeg and png allowed.";
+            }
+
             // create the product
-            $adminView->createProductView($name, $price, $discount, $description, $code, $image);
+            $adminView->createProductView($name, $price, $discount, $description, $code, $imageNameNew);
         break;
 
 
@@ -105,7 +137,7 @@ if($_POST){
           // var_dump($_POST);
           // die();
 
-          $adminView->updateProductView($name, $price, $discount, $description, $code, $image);
+          $adminView->updateProductView($id, $name, $price, $discount, $description, $code, $image);
         break;
     }
   }
@@ -194,7 +226,7 @@ include_once "./assets/layout/footer.php";
       </div>
 
       <div class="modal-body">
-        <form action="admin-panel" method="post">
+        <form action="admin-panel" method="post" enctype="multipart/form-data">
 
           <input type='hidden' name='action' value='createProduct'>
           <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>" />
@@ -214,7 +246,7 @@ include_once "./assets/layout/footer.php";
         <div class="form-group">
           <label  for="discount">Discount</label>
           <div class="input-group ">
-            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Discount">
+            <input type="text" class="form-control" id="discount" name="discount" placeholder="Discount">
             <div class="input-group-prepend">
               <div class="input-group-text">%</div>
             </div>
@@ -223,7 +255,7 @@ include_once "./assets/layout/footer.php";
 
         <div class="form-group">
         <label for="description">Product Description</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" name='description' rows="3"></textarea>
+        <textarea class="form-control" id="description" name='description' rows="3"></textarea>
         </div>
 
         <div class="form-group">
@@ -234,7 +266,7 @@ include_once "./assets/layout/footer.php";
         <div class="form-group" >
           <div class="custom-file">
             <input type="file" class="custom-file-input" id="image" name='image'>
-            <label for="image" class="custom-file-label">Select Product Image...</label>
+            <label for="image" class="custom-file-label">Select Product Image (MAX 1MB)</label>
           </div>
         </div>
 
@@ -318,6 +350,7 @@ console.log(productB64);
 $("#updateProductModal input[name='productID']").val( product.ProductID );
 $("#updateProductModal input[name='name']").val( product.Name );
 $("#updateProductModal input[name='price']").val( product.Price );
+$("#updateProductModal input[name='discount']").val( product.Discount );
 $("#updateProductModal textarea[name='description']").val( product.Description );
 $("#updateProductModal input[name='code']").val( product.Code );
 $("#updateProductModal input[name='image']").val( product.Image );
@@ -355,7 +388,7 @@ $("#updateProductModal input[name='image']").val( product.Image );
         <div class="form-group">
           <label for="discount">Discount</label>
           <div class="input-group ">
-            <input type="text" class="form-control" id="discount" placeholder="Discount">
+            <input type="text" class="form-control" id="discount" name="discount" placeholder="Discount">
             <div class="input-group-prepend">
               <div class="input-group-text">%</div>
             </div>

@@ -4,7 +4,7 @@ USE DWPDB;
 
 
 -- CREATE TABLES
-CREATE TABLE products (
+CREATE TABLE IF NOT EXISTS products (
     ProductID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Name varchar(255) NOT NULL,
     Price double(10,2) NOT NULL,
@@ -15,13 +15,13 @@ CREATE TABLE products (
 );
 
 
-CREATE TABLE roles (
+CREATE TABLE IF NOT EXISTS roles (
     RoleID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     RoleName varchar(255) NOT NULL
 );
 
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
     UserID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Name varchar(255) NOT NULL,
     Address varchar(255) NOT NULL,
@@ -36,14 +36,14 @@ CREATE TABLE users (
 );
 
 
-CREATE TABLE orders (
+CREATE TABLE IF NOT EXISTS orders (
     OrderID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     UserID int NOT NULL,
     FOREIGN KEY(UserID) REFERENCES users(UserID)
 );
 
 
-CREATE TABLE orderEntries (
+CREATE TABLE IF NOT EXISTS orderEntries (
     OrderID int NOT NULL,
     ProductID int NOT NULL,
     quantity int NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE orderEntries (
 
 
 
-CREATE TABLE invoice (
+CREATE TABLE IF NOT EXISTS invoice (
     InvoiceID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     ProductID int NOT NULL,
     UserID int NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE invoice (
 );
 
 
-CREATE TABLE company (
+CREATE TABLE IF NOT EXISTS company (
     CompanyID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Name varchar(255) NOT NULL,
     Description text NOT NULL,
