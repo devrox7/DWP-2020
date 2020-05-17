@@ -54,7 +54,7 @@
                             </li>
 
                             <li class="nav-item ">
-                                <a href="about" class="nav-link" href="#"> <i class="fas fa-address-card"></i> &nbsp;About</a>
+                                <a href="about" class="nav-link" href="#"> <i class="fas fa-file-alt"></i> &nbsp;About</a>
                             </li>
 
 
