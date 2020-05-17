@@ -28,20 +28,20 @@ echo"
     <div class='content-container col-12 col-xs-12 col-sm-10 col-md-7 col-lg-6 col-xl-6 m-4'>
     <div class='d-flex justify-content-center'>
         
-<div class='text-center col-6'> 
-    <h3>". $aboutView->info['Name'] ."</h3>
-    <br><br>
-    <h4>Company Description</h4>
-        ". $aboutView->info['Description'] ."<br><br><br>
+    <div class='text-center col-6'>     
+        <h3>". $aboutView->info['Name'] ."</h3>
+        <br><br>
+        <h4>Company Description</h4>
+            ". $aboutView->info['Description'] ."<br><br><br>
 
-    <h4>Opening Hours</h4>
-        ". $aboutView->info['OpeningHours'] ."<br><br><br>
+        <h4>Opening Hours</h4>
+            ". $aboutView->info['OpeningHours'] ."<br><br><br>
 
-    <h4>Contact Info</h4>
-        ". $aboutView->info['ContactInfo'] ."<br><br><br>
+        <h4>Contact Info</h4>
+            ". $aboutView->info['ContactInfo'] ."<br><br><br>
 
-    <h4>Address</h4>
-        ". $aboutView->info['Address'] ."<br><br><br>
+        <h4>Address</h4>
+            ". $aboutView->info['Address'] ."<br><br><br>
 
         </div>
          

@@ -55,6 +55,25 @@ class LoginModel extends DWPDB{
         }
     }
 
+    protected function getUserByIdDB($id){
+        try {
+            $query = "SELECT Name, Address, ZIP, City, Phone, Email FROM users WHERE UserID = :id";
+            $stmt = $this->connect()->prepare($query);
+
+            $id = trim(htmlspecialchars(strip_tags($id)));
+            $stmt->bindParam(':id', $id);
+            
+
+            $stmt->execute();
+    
+            $result = $stmt->fetchAll();
+            return $result[0];
+            }
+            catch (PDOException $exception) {
+                die('ERROR: ' . $exception->getMessage());
+            }
+    }
+
 }
 
 

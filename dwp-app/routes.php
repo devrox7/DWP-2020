@@ -61,7 +61,7 @@ Route::set('/DWP-2020/dwp-app/about', function(){
 
 });
 
-Route::set('/DWP-2020/dwp-app/profile', function(){
+Route::set("/DWP-2020/dwp-app/profile", function(){
 
     require_once 'Views/Profile.view.php';
 

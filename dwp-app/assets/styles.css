@@ -176,7 +176,7 @@ h6 {
 }
 
 .user-icon {
-    color: #0069d9;
+    color: #0069d9 !important;
     width: 50px;
     background: #ffffff;
     text-align: center;
@@ -285,6 +285,10 @@ a {
     border-color: rgb(252, 186, 0);
     font-family: 'Work Sans', sans-serif;
     border-radius: 20px;
+}
+
+.btn-outline-light:hover {
+    color: #0069d9 !important;
 }
 
 .prod-price-disc {
