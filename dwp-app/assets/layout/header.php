@@ -83,12 +83,12 @@
                             
                         ?>
                             <div class="logged-user"><?php echo $_SESSION['Name'] ?> </div>
-                            <a href="logout"  class="btn btn-outline-light btn-sm  m-1 mr-2"> Logout </a>
+                            <a href="logout"  class="btn btn-outline-light btn-sm  m-1 "> Logout </a>
                             <a  href='profile'  class="user-icon " style='color: #0c4e94' data-toggle="tooltip" data-placement="left" title="Profile"> <i class="fas fa-user"></i></a>
 
                         <?php }else{ ?>
                             <a href="register"  class="btn btn-outline-light btn-sm  m-1"> Register </a>
-                            <a href="login" class="btn btn-outline-light btn-sm m-1 mr-3"> Login </a>
+                            <a href="login" class="btn btn-outline-light btn-sm m-1 "> Login </a>
                         <?php } ?>
 
                         </div>
@@ -106,7 +106,7 @@
                     <div class='row d-flex justify-content-around'>
 
                         <div   data-toggle='tooltip' data-placement='left' title='Shopping Basket' class='col d-flex justify-content-end'>
-                            <button type='button'' class='basket-icon btn btn-primary' >
+                            <button type='button'' class='basket-icon btn btn-primary m-1' >
                                 <i class='fas fa-shopping-cart'></i>
                                 <span class='badge badge-light'>0</span>
 
