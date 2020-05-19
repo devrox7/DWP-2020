@@ -53,7 +53,9 @@ CREATE TABLE IF NOT EXISTS orderEntries (
     OrderID int NOT NULL,
     ProductID int NOT NULL,
     quantity int NOT NULL,
-    PRIMARY KEY (OrderID, ProductID) 
+    FOREIGN KEY(OrderID) REFERENCES orders(OrderID),
+    FOREIGN KEY(ProductID) REFERENCES products(ProductID),
+    CONSTRAINT PK_orderEntry PRIMARY KEY (OrderID,ProductID)
 );
 
 
