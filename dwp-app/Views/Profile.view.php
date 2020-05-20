@@ -45,7 +45,7 @@ echo"
                         ". $profileView->info['ZIP'] .",
                         ". $profileView->info['Address'] ."<br><br><br>
 
-                    <button class='btn btn-primary' disabled>Change User Info</button><br><br>
+                    <button class='btn btn-primary' disabled>Change Account Information</button><br><br>
                 
            
             </div>

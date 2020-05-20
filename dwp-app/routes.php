@@ -35,7 +35,7 @@ Route::set('/DWP-2020/dwp-app/register', function(){
     require_once 'Views/Register.view.php';
     }
     else{
-    require_once 'Views/Homee.view.php';
+    require_once 'Views/Home.view.php';
     }
 
 });
@@ -44,7 +44,7 @@ Route::set('/DWP-2020/dwp-app/login', function(){
     if(!$_SESSION['UserID'] ){
     require_once 'Views/Login.view.php';
     }else{
-    require_once 'Views/Homee.view.php';
+    require_once 'Views/Home.view.php';
     }
 
 });

@@ -12,7 +12,8 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="./assets/styles.css?v=<?php echo filemtime(getcwd() . "/assets/styles.css"); ?>"  rel="stylesheet">
-
+    <link rel="icon" type="image/png" href="./assets/images/logo-blue.png">
+    
     <script src="https://www.google.com/recaptcha/api.js?render=<?php echo SITE_KEY ?>"></script>
         
 </head>
