@@ -43,7 +43,7 @@ class HomeView extends HomeController
                             "; if($offer['Discount'] !== NULL){ echo "
                                 
 
-                                <p class='prod-price-disc mb-2' style='color:rgb(252, 186, 0) !importan'>" . calculateDiscount($offer['Discount'], $offer['Price']) . " kr</p>
+                                <p class='prod-price-disc mb-2' style='color:rgb(252, 186, 0) !importan'>" . $this->calculateDiscount($offer['Discount'], $offer['Price']) . " kr</p>
 
                                 <p class='discounted mb-2'>" . $offer['Price'] . " kr </p>
                             "; } echo"
