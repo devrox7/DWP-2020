@@ -62,7 +62,6 @@ if($_POST)
         $return = $contactView->getCAPTCHA($_POST['g-recaptcha-response']);
 
         if($return->success == true && $return->score > 0.5){
-            // echo "<div class='alert alert-success'>Succes!</div>";
             $contactView->sendEmail($email,$subject,$message,$fullName);
         }
         else

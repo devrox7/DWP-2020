@@ -28,7 +28,6 @@ class ProductModel extends DWPDB
         try {
             $query = "SELECT * FROM products WHERE ProductID = :id LIMIT 0,1";
             $stmt = $this->connect()->prepare($query);
-            // this is the first question mark
             $stmt->bindParam(':id', $id);
             $stmt->execute();
 

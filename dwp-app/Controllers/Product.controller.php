@@ -16,8 +16,6 @@ class ProductController extends ProductModel{
     }
 
     protected function updateProduct($id, $name, $price, $discount, $description, $code, $image){
-        echo "8";
-
         $this->updateProductDB($id, $name, $price, $discount, $description, $code, $image);
         
     }

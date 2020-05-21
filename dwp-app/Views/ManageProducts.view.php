@@ -59,11 +59,6 @@ if($_POST){
   // var_dump($_SESSION);
 
   if (!empty($_POST['token']) && hash_equals($_SESSION['token'], $_POST['token'])) {
-    
-
-   
-
-
 
       switch($_POST['action'])
       {
